@@ -1,4 +1,4 @@
-﻿namespace BlazorWebappResume.Services;
+﻿namespace PersonalWebsite.Services;
 
 public class ThemeService
 {

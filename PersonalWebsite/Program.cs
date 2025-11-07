@@ -1,8 +1,8 @@
 using Blazorise;
 using Blazorise.Icons.FontAwesome;
 using Blazorise.Tailwind;
-using BlazorWebappResume;
-using BlazorWebappResume.Services;
+using PersonalWebsite;
+using PersonalWebsite.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

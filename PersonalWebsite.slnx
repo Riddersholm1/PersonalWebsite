@@ -5,5 +5,5 @@
     <File Path="LICENSE.txt" />
     <File Path="README.md" />
   </Folder>
-  <Project Path="BlazorWebappResume/BlazorWebappResume.csproj" />
+  <Project Path="PersonalWebsite/PersonalWebsite.csproj" />
 </Solution>
