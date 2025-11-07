@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/.SolutionItems/">
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="LICENSE.txt" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="BlazorWebappResume/BlazorWebappResume.csproj" />
+</Solution>

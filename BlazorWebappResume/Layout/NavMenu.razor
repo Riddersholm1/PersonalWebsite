@@ -1,0 +1,44 @@
+﻿@using BlazorWebappResume.Services
+
+@inject ThemeService ThemeService
+
+<Bar Breakpoint="Breakpoint.Desktop" Background="@CurrentBackground" ThemeContrast="@CurrentThemeContrast">
+    <BarBrand>
+        <BarItem>
+            <Heading Size="HeadingSize.Is4">Jespers Portfolio</Heading>
+        </BarItem>
+    </BarBrand>
+
+    <BarToggler />
+
+    <BarMenu>
+        <BarStart>
+            <BarItem><BarLink To="/">Home</BarLink></BarItem>
+            <BarItem><BarLink To="/about">About</BarLink></BarItem>
+            <BarItem><BarLink To="/skills">Skills</BarLink></BarItem>
+            <BarItem><BarLink To="/experience">Experience</BarLink></BarItem>
+            <BarItem><BarLink To="/projects">Projects</BarLink></BarItem>
+            <BarItem><BarLink To="/education">Education</BarLink></BarItem>
+            <BarItem><BarLink To="/contact">Contact</BarLink></BarItem>
+        </BarStart>
+
+        <BarEnd>
+            <BarItem>
+                <Button Color="Color.Default" Clicked="@ToggleTheme">
+                    <Icon Name="@(ThemeService.IsDarkMode? IconName.Sun: IconName.Moon)" />
+                </Button>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
+
+@code {
+    private Background CurrentBackground => ThemeService.IsDarkMode ? Background.Dark : Background.Light;
+    private ThemeContrast CurrentThemeContrast => ThemeService.IsDarkMode ? ThemeContrast.Dark : ThemeContrast.Light;
+
+    private void ToggleTheme()
+    {
+        ThemeService.ToggleTheme();
+        StateHasChanged();
+    }
+}
