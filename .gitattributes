@@ -2,10 +2,6 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
-*.js binary
-*.json binary
-*.css binary
-*.html binary
 
 ###############################################################################
 # Set default behavior for command prompt diff.
