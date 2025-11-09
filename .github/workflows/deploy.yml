@@ -3,24 +3,25 @@ env:
   PUBLISH_DIR: PersonalWebsite/bin/Release/net9.0/publish/wwwroot
 
 on:
-  # Runs on pushes targeting the default branch for the app's folder path
   push:
     paths:
       - PersonalWebsite/**
     branches:
       - master
 
-  # Allows you to run this workflow manually from the Actions tab
+  pull_request:
+    paths:
+      - PersonalWebsite/**
+    branches:
+      - master
+
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -51,7 +52,7 @@ jobs:
         run: dotnet build PersonalWebsite -c Release --no-restore
 
       - name: Publish app
-        run: dotnet publish PersonalWebsite -c Release -p:RunAOTCompilation=true
+        run: dotnet publish PersonalWebsite -c Release --no-restore
 
       - name: Rewrite base href
         uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
