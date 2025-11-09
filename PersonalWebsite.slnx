@@ -1,10 +1,10 @@
 <Solution>
   <Folder Name="/.SolutionItems/">
     <File Path=".gitattributes" />
-    <File Path=".github/workflows/deploy.yml" />
     <File Path=".gitignore" />
     <File Path="LICENSE.txt" />
     <File Path="README.md" />
+    <File Path="SECURITY.md" />
   </Folder>
   <Project Path="PersonalWebsite/PersonalWebsite.csproj" />
 </Solution>
