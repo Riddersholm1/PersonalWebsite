@@ -7,13 +7,13 @@ on:
     paths:
       - PersonalWebsite/**
     branches:
-      - master
+      - main
 
   pull_request:
     paths:
       - PersonalWebsite/**
     branches:
-      - master
+      - main
 
   workflow_dispatch:
 
