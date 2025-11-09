@@ -1,5 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Personal Website to GitHub Pages
 env:
   PUBLISH_DIR: PersonalWebsite/bin/Release/net9.0/publish/wwwroot
 
@@ -27,14 +26,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -44,14 +37,47 @@ jobs:
         with:
           dotnet-version: '9.0'
 
+      - name: Cache NuGet packages
+        uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json', '**/*.csproj') }}
+          restore-only: true
+
+      - name: Restore dependencies
+        run: dotnet restore PersonalWebsite
+
+      - name: Build
+        run: dotnet build PersonalWebsite -c Release --no-restore
+
       - name: Publish app
-        run: dotnet publish PersonalWebsite -c Release
+        run: dotnet publish PersonalWebsite -c Release -p:RunAOTCompilation=true
 
       - name: Rewrite base href
         uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
         with:
-          html_path: ${{ env.PUBLISH_DIR }}/index.html
+          html_path: publish/wwwroot/index.html
           base_href: /blazor-samples/
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
+        with:
+          name: published-app
+          path: publish/wwwroot
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16 # v4.1.8
+        with:
+          name: published-app
+          path: wwwroot
 
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
@@ -59,7 +85,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ${{ env.PUBLISH_DIR }}
+          path: wwwroot
 
       - name: Deploy to GitHub Pages
         id: deployment
