@@ -57,14 +57,14 @@ jobs:
       - name: Rewrite base href
         uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
         with:
-          html_path: publish/wwwroot/index.html
+          html_path: ${{ env.PUBLISH_DIR }}/index.html
           base_href: /blazor-samples/
 
       - name: Upload build artifact
         uses: actions/upload-artifact@6f51ac03b9356f520e9adb1b1b7802705f340c2b # v4.5.0
         with:
           name: published-app
-          path: publish/wwwroot
+          path: ${{ env.PUBLISH_DIR }}
 
   deploy:
     needs: build
