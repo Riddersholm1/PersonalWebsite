@@ -1,4 +1,4 @@
-name: Deploy Personal Website to GitHub Pages
+name: Deploy to GitHub Pages
 env:
   PUBLISH_DIR: PersonalWebsite/bin/Release/net9.0/publish/wwwroot
 
