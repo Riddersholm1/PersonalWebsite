@@ -1,8 +1,4 @@
-﻿@using PersonalWebsite.Services
-
-@inject ThemeService ThemeService
-
-<Bar Breakpoint="Breakpoint.Desktop" Background="@CurrentBackground" ThemeContrast="@CurrentThemeContrast">
+﻿<Bar Breakpoint="Breakpoint.Desktop" Background="@CurrentBackground" ThemeContrast="@CurrentThemeContrast">
     <BarBrand>
         <BarItem>
             <Heading Size="HeadingSize.Is4">Jespers Portfolio</Heading>
@@ -24,8 +20,8 @@
 
         <BarEnd>
             <BarItem>
-                <Button Color="Color.Default" Clicked="@ToggleTheme">
-                    <Icon Name="@(ThemeService.IsDarkMode? IconName.Sun: IconName.Moon)" />
+                <Button Clicked="@ToggleTheme">
+                    <Icon Name="IconName.Sun" />
                 </Button>
             </BarItem>
         </BarEnd>
@@ -33,12 +29,10 @@
 </Bar>
 
 @code {
-    private Background CurrentBackground => ThemeService.IsDarkMode ? Background.Dark : Background.Light;
-    private ThemeContrast CurrentThemeContrast => ThemeService.IsDarkMode ? ThemeContrast.Dark : ThemeContrast.Light;
+    private Background CurrentBackground => Background.Dark;
+    private ThemeContrast CurrentThemeContrast => ThemeContrast.Dark;
 
     private void ToggleTheme()
     {
-        ThemeService.ToggleTheme();
-        StateHasChanged();
     }
 }
