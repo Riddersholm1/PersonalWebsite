@@ -1,6 +1,6 @@
 name: Deploy to GitHub Pages
 env:
-  PUBLISH_DIR: src/PersonalWebsite/bin/Release/net9.0/publish/wwwroot
+  PUBLISH_DIR: src/PersonalWebsite/bin/Release/net10.0/publish/wwwroot
 
 on:
   push:
@@ -44,6 +44,7 @@ jobs:
           dotnet-version: '10.0'
 
       - name: Publish app
+        working-directory: src/PersonalWebsite
         run: dotnet publish PersonalWebsite -c Release
 
       - name: Rewrite base href
