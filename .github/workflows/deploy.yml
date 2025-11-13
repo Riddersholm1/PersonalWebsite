@@ -45,7 +45,7 @@ jobs:
 
       - name: Publish app
         working-directory: src/PersonalWebsite
-        run: dotnet publish PersonalWebsite -c Release
+        run: dotnet publish -c Release
 
       - name: Rewrite base href
         uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.0.0
