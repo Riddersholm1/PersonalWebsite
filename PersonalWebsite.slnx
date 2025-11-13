@@ -6,5 +6,5 @@
     <File Path="README.md" />
     <File Path="SECURITY.md" />
   </Folder>
-  <Project Path="src/PersonalWebsite/PersonalWebsite.csproj" Id="3e110028-caff-4802-b56f-7638fa208ea1" />
+  <Project Path="PersonalWebsite/PersonalWebsite.csproj" Id="3e110028-caff-4802-b56f-7638fa208ea1" />
 </Solution>
