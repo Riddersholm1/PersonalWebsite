@@ -1,17 +1,17 @@
 name: Deploy to GitHub Pages
 env:
-  PUBLISH_DIR: PersonalWebsite/bin/Release/net9.0/publish/wwwroot
+  PUBLISH_DIR: src/PersonalWebsite/bin/Release/net9.0/publish/wwwroot
 
 on:
   push:
     paths:
-      - PersonalWebsite/**
+      - src/PersonalWebsite/**
     branches:
       - main
 
   pull_request:
     paths:
-      - PersonalWebsite/**
+      - src/PersonalWebsite/**
     branches:
       - main
 
@@ -41,7 +41,7 @@ jobs:
       - name: Get latest .NET SDK
         uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
         with:
-          dotnet-version: '9.0'
+          dotnet-version: '10.0'
 
       - name: Publish app
         run: dotnet publish PersonalWebsite -c Release
@@ -50,7 +50,7 @@ jobs:
         uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.0.0
         with:
           html_path: ${{ env.PUBLISH_DIR }}/index.html
-          base_href: /PersonalWebsite/
+          base_href: /src/PersonalWebsite/
 
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
