@@ -1,0 +1,72 @@
+﻿@inject IJSRuntime JS
+
+<Bar Breakpoint="Breakpoint.Desktop">
+    <BarBrand>
+        <BarItem>
+            <BarLink To="/">
+                <Heading Size="HeadingSize.Is4" Class="text-gray-900 dark:text-gray-100">Jespers Portfolio</Heading>
+            </BarLink>
+        </BarItem>
+    </BarBrand>
+
+    <BarToggler />
+
+    <BarMenu>
+        <BarStart>
+            <BarItem><BarLink To="/" Class="!text-gray-900 dark:!text-gray-100 hover:!text-blue-600 dark:hover:!text-blue-400 [&.text-white]:!text-blue-600 dark:[&.text-white]:!text-blue-400">Home</BarLink></BarItem>
+            <BarItem><BarLink To="/about" Class="!text-gray-900 dark:!text-gray-100 hover:!text-blue-600 dark:hover:!text-blue-400 [&.text-white]:!text-blue-600 dark:[&.text-white]:!text-blue-400">About</BarLink></BarItem>
+            <BarItem><BarLink To="/skills" Class="!text-gray-900 dark:!text-gray-100 hover:!text-blue-600 dark:hover:!text-blue-400 [&.text-white]:!text-blue-600 dark:[&.text-white]:!text-blue-400">Skills</BarLink></BarItem>
+            <BarItem><BarLink To="/experience" Class="!text-gray-900 dark:!text-gray-100 hover:!text-blue-600 dark:hover:!text-blue-400 [&.text-white]:!text-blue-600 dark:[&.text-white]:!text-blue-400">Experience</BarLink></BarItem>
+            <BarItem><BarLink To="/projects" Class="!text-gray-900 dark:!text-gray-100 hover:!text-blue-600 dark:hover:!text-blue-400 [&.text-white]:!text-blue-600 dark:[&.text-white]:!text-blue-400">Projects</BarLink></BarItem>
+            <BarItem><BarLink To="/education" Class="!text-gray-900 dark:!text-gray-100 hover:!text-blue-600 dark:hover:!text-blue-400 [&.text-white]:!text-blue-600 dark:[&.text-white]:!text-blue-400">Education</BarLink></BarItem>
+            <BarItem><BarLink To="/contact" Class="!text-gray-900 dark:!text-gray-100 hover:!text-blue-600 dark:hover:!text-blue-400 [&.text-white]:!text-blue-600 dark:[&.text-white]:!text-blue-400">Contact</BarLink></BarItem>
+        </BarStart>
+
+        <BarEnd>
+            <BarItem>
+                <Button Clicked="async () => await ToggleThemeAsync()" Class="bg-gray-100 dark:bg-gray-900 !ring-0 border-2 border-gray-900 dark:border-gray-100 rounded">
+                    @if (_isDarkMode)
+                    {
+                        <Icon Class="text-gray-100" Name="IconName.Sun" />
+                    }
+                    else
+                    {
+                        <Icon Class="text-gray-900" Name="IconName.Moon" />
+                    }
+                </Button>
+            </BarItem>
+        </BarEnd>
+    </BarMenu>
+</Bar>
+
+@code {
+    private bool _isDarkMode;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var theme = await JS.InvokeAsync<string?>("localStorage.getItem", "theme");
+            _isDarkMode = theme == "dark"
+                          || (string.IsNullOrEmpty(theme)
+                              && await JS.InvokeAsync<bool>("window.matchMedia('(prefers-color-scheme: dark)').matches"));
+            StateHasChanged();
+        }
+    }
+
+    private async Task ToggleThemeAsync()
+    {
+        _isDarkMode = !_isDarkMode;
+
+        if (_isDarkMode)
+        {
+            await JS.InvokeVoidAsync("document.documentElement.classList.add", "dark");
+            await JS.InvokeVoidAsync("localStorage.setItem", "theme", "dark");
+        }
+        else
+        {
+            await JS.InvokeVoidAsync("document.documentElement.classList.remove", "dark");
+            await JS.InvokeVoidAsync("localStorage.setItem", "theme", "light");
+        }
+    }
+}

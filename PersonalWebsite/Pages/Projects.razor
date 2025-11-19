@@ -1,0 +1,22 @@
+﻿@page "/projects"
+
+<section class="max-w-6xl mx-auto py-12">
+    <h2 class="text-3xl font-bold mb-8">Projects</h2>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card>
+            <CardImage Src="images/projects/stockapp.jpg" Alt="Stock Insight" />
+            <CardBody>
+                <CardTitle>Stock Insight Tool</CardTitle>
+                <CardText>
+                    A Blazor app that retrieves and visualizes stock fundamentals using free APIs.
+                </CardText>
+                <CardActions>
+                    <Button Target="Target.Blank" To="https://github.com/username/stock-insight">GitHub</Button>
+                </CardActions>
+            </CardBody>
+        </Card>
+
+        <!-- Add more projects here -->
+    </div>
+</section>

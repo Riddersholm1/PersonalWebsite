@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/.SolutionItems/">
+    <File Path=".gitattributes" />
+    <File Path=".github/workflows/deploy.yml" />
+    <File Path=".gitignore" />
+    <File Path="LICENSE.txt" />
+    <File Path="README.md" />
+    <File Path="SECURITY.md" />
+  </Folder>
+  <Project Path="PersonalWebsite/PersonalWebsite.csproj" Id="3e110028-caff-4802-b56f-7638fa208ea1" />
+</Solution>
