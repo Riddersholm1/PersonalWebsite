@@ -1,5 +1,7 @@
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
+env:
+  PUBLISH_DIR: PersonalWebsite/bin/Release/net9.0/publish/wwwroot
 
 on:
   # Runs on pushes targeting the default branch for the app's folder path
@@ -43,28 +45,13 @@ jobs:
           dotnet-version: '9.0'
 
       - name: Publish app
-        run: dotnet publish PersonalWebsite -c Release
+        run: dotnet publish BlazorApp1 -c Release
 
-      - name: List publish directory
-        run: find PersonalWebsite/bin/Release/net9.0 -type f -name "index.html"
-
-      - name: Set publish directory
-        id: set-dir
-        run: |
-          if [ -d "PersonalWebsite/bin/Release/net9.0/publish/wwwroot" ]; then
-            echo "PUBLISH_DIR=PersonalWebsite/bin/Release/net9.0/publish/wwwroot" >> $GITHUB_ENV
-          elif [ -d "PersonalWebsite/bin/Release/net9.0/wwwroot" ]; then
-            echo "PUBLISH_DIR=PersonalWebsite/bin/Release/net9.0/wwwroot" >> $GITHUB_ENV
-          else
-            echo "Could not find wwwroot directory"
-            exit 1
-          fi
-
-      - name: Add .nojekyll file
-        run: touch ${{ env.PUBLISH_DIR }}/.nojekyll
-
-      - name: Copy index.html to 404.html
-        run: cp ${{ env.PUBLISH_DIR }}/index.html ${{ env.PUBLISH_DIR }}/404.html
+      - name: Rewrite base href
+        uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
+        with:
+          html_path: ${{ env.PUBLISH_DIR }}/index.html
+          base_href: /PersonalWebsite/
 
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
