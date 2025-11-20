@@ -1,4 +1,6 @@
 name: Deploy to GitHub Pages
+env:
+  PUBLISH_DIR: PersonalWebsite/bin/Release/net10.0/publish/wwwroot
 
 on:
   push:
@@ -33,22 +35,16 @@ jobs:
       - name: Get latest .NET SDK
         uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
         with:
-          dotnet-version: '10.0.x'
-
-      - name: Restore dependencies
-        run: dotnet restore PersonalWebsite
+          dotnet-version: '9.0.x'
 
       - name: Publish app
-        run: dotnet publish PersonalWebsite/PersonalWebsite.csproj -c Release -o release --nologo
+        run: dotnet publish PersonalWebsite -c Release
 
-      - name: Change base-tag in index.html
-        run: sed -i 's/<base href="\/" \/>/<base href="\/PersonalWebsite\/" \/>/g' release/wwwroot/index.html
-
-      - name: Add .nojekyll file
-        run: touch release/wwwroot/.nojekyll
-
-      - name: copy index.html to 404.html
-        run: cp release/wwwroot/index.html release/wwwroot/404.html
+      - name: Rewrite base href
+        uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
+        with:
+          html_path: ${{ env.PUBLISH_DIR }}/index.html
+          base_href: /PersonalWebsite/
 
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
@@ -56,7 +52,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
         with:
-          path: release/wwwroot
+          path: ${{ env.PUBLISH_DIR }}
 
       - name: Deploy to GitHub Pages
         id: deployment

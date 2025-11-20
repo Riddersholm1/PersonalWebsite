@@ -7,5 +7,6 @@
     <File Path="README.md" />
     <File Path="SECURITY.md" />
   </Folder>
+  <Project Path="BlazorApp1/BlazorApp1.csproj" Id="d0d75ab1-523e-493b-963c-056853a38b8f" />
   <Project Path="PersonalWebsite/PersonalWebsite.csproj" Id="3e110028-caff-4802-b56f-7638fa208ea1" />
 </Solution>
