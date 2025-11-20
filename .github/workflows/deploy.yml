@@ -1,11 +1,11 @@
 name: Deploy to GitHub Pages
 env:
-  PUBLISH_DIR: PersonalWebsite/bin/Release/net9.0/publish/wwwroot
+  PUBLISH_DIR: BlazorApp1/bin/Release/net9.0/publish/wwwroot
 
 on:
   push:
     paths:
-      - PersonalWebsite/**
+      - BlazorApp1/**
     branches:
       - main
 
@@ -38,13 +38,13 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Publish app
-        run: dotnet publish PersonalWebsite -c Release
+        run: dotnet publish BlazorApp1 -c Release
 
       - name: Rewrite base href
         uses: SteveSandersonMS/ghaction-rewrite-base-href@5b54862a8831e012d4f1a8b2660894415fdde8ec # v1.1.0
         with:
           html_path: ${{ env.PUBLISH_DIR }}/index.html
-          base_href: /PersonalWebsite/
+          base_href: /BlazorApp1/
 
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
