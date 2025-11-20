@@ -1,6 +1,6 @@
 name: Deploy to GitHub Pages
 env:
-  PUBLISH_DIR: PersonalWebsite/bin/Release/net10.0/publish/wwwroot
+  PUBLISH_DIR: PersonalWebsite/bin/Release/net9.0/publish/wwwroot
 
 on:
   push:
