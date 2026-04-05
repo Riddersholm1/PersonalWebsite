@@ -13,4 +13,9 @@
     <PackageReference Include="MudBlazor" Version="9.2.0" />
   </ItemGroup>
 
+
+  <Target Name="BuildTailwindCSS" BeforeTargets="Build">
+    <Exec Command="npm run build:css" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+
 </Project>
