@@ -5,7 +5,6 @@
     <File Path=".gitignore" />
     <File Path="LICENSE.txt" />
     <File Path="README.md" />
-    <File Path="SECURITY.md" />
   </Folder>
-  <Project Path="PersonalWebsite/PersonalWebsite.csproj" Id="3e110028-caff-4802-b56f-7638fa208ea1" />
+  <Project Path="MyWebsite/MyWebsite.csproj" Id="d8f0fce1-454c-4b4f-ae7f-03537a80a4ff" />
 </Solution>
