@@ -1,15 +1,86 @@
-﻿<section id="contact" class="page-section">
+<section id="contact" class="page-section contact-section">
     <MudContainer MaxWidth="MaxWidth.Medium">
-        <MudStack Spacing="4">
-            <MudText Typo="Typo.h3">Kontakt</MudText>
-            <MudText Typo="Typo.body1">
-                Har du et spørgsmål eller vil du samarbejde? Du er velkommen til at tage fat i mig.
-            </MudText>
-            <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-                <MudButton Href="mailto:jesper@example.com" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Email">E-mail</MudButton>
-                <MudButton Href="https://www.linkedin.com/in/jesper-riddersholm/" Target="_blank" Variant="Variant.Outlined">LinkedIn</MudButton>
-                <MudButton Href="https://github.com/Riddersholm1" Target="_blank" Variant="Variant.Outlined">GitHub</MudButton>
+        <MudStack Spacing="6">
+            <MudStack Spacing="2" AlignItems="AlignItems.Center" Class="section-heading">
+                <MudText Typo="Typo.overline" Color="Color.Primary">Lad os tale sammen</MudText>
+                <MudText Typo="Typo.h3" Align="Align.Center">Kontakt</MudText>
+                <MudDivider Class="section-divider" />
+                <MudText Typo="Typo.body1" Align="Align.Center" Class="contact-lead">
+                    Har du et spørgsmål, et projekt eller bare lyst til at sige hej?
+                    Du er altid velkommen til at tage fat i mig.
+                </MudText>
             </MudStack>
+
+            <MudPaper Elevation="3" Class="contact-card">
+                <MudGrid Spacing="6">
+                    <MudItem xs="12" md="6">
+                        <MudStack Spacing="4">
+                            <MudStack Row Spacing="3" AlignItems="AlignItems.Center">
+                                <MudAvatar Color="Color.Primary" Variant="Variant.Filled">
+                                    <MudIcon Icon="@Icons.Material.Filled.Email" />
+                                </MudAvatar>
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.subtitle2">E-mail</MudText>
+                                    <MudLink Href="mailto:jesper@example.com" Underline="Underline.Hover">
+                                        jesper@example.com
+                                    </MudLink>
+                                </MudStack>
+                            </MudStack>
+
+                            <MudStack Row Spacing="3" AlignItems="AlignItems.Center">
+                                <MudAvatar Color="Color.Primary" Variant="Variant.Filled">
+                                    <MudIcon Icon="@Icons.Material.Filled.LocationOn" />
+                                </MudAvatar>
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.subtitle2">Lokation</MudText>
+                                    <MudText Typo="Typo.body2">Rødekro, Danmark</MudText>
+                                </MudStack>
+                            </MudStack>
+
+                            <MudStack Row Spacing="3" AlignItems="AlignItems.Center">
+                                <MudAvatar Color="Color.Success" Variant="Variant.Filled">
+                                    <MudIcon Icon="@Icons.Material.Filled.Schedule" />
+                                </MudAvatar>
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.subtitle2">Status</MudText>
+                                    <MudText Typo="Typo.body2">Åben for en uforpligtende snak</MudText>
+                                </MudStack>
+                            </MudStack>
+                        </MudStack>
+                    </MudItem>
+
+                    <MudItem xs="12" md="6">
+                        <MudStack Spacing="3" Justify="Justify.Center" Class="contact-actions">
+                            <MudButton Href="mailto:jesper@example.com"
+                                       Variant="Variant.Filled"
+                                       Color="Color.Primary"
+                                       Size="Size.Large"
+                                       FullWidth="true"
+                                       StartIcon="@Icons.Material.Filled.Email">
+                                Send mig en e-mail
+                            </MudButton>
+                            <MudButton Href="https://www.linkedin.com/in/jesper-riddersholm/"
+                                       Target="_blank"
+                                       Variant="Variant.Outlined"
+                                       Color="Color.Primary"
+                                       Size="Size.Large"
+                                       FullWidth="true"
+                                       StartIcon="@Icons.Custom.Brands.LinkedIn">
+                                LinkedIn
+                            </MudButton>
+                            <MudButton Href="https://github.com/Riddersholm1"
+                                       Target="_blank"
+                                       Variant="Variant.Outlined"
+                                       Color="Color.Primary"
+                                       Size="Size.Large"
+                                       FullWidth="true"
+                                       StartIcon="@Icons.Custom.Brands.GitHub">
+                                GitHub
+                            </MudButton>
+                        </MudStack>
+                    </MudItem>
+                </MudGrid>
+            </MudPaper>
         </MudStack>
     </MudContainer>
 </section>
