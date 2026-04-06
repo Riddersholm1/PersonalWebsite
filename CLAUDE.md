@@ -5,9 +5,19 @@ Guidance for AI assistants (Claude Code) working in this repository.
 ## Project overview
 
 Personal portfolio website for Jesper Bruhn Riddersholm. It is a **Blazor
-WebAssembly** single-page application built on **.NET 10** and styled with
-**MudBlazor 9.2**. The site is a single-scroll page (Danish UI) with sections
-for Home, About, Skills, Experience, Projects, Education and Contact.
+WebAssembly** single-page application built on **.NET 10** / **C# 14** and
+styled with **MudBlazor 9.2**. The site is a single-scroll page (Danish UI)
+with sections for Home, About, Skills, Experience, Projects, Education and
+Contact.
+
+- **Hosting:** Cloudflare Pages (static WebAssembly bundle, no server runtime)
+- **Error monitoring:** Sentry (see "Error monitoring" below)
+- **Source control:** GitHub
+
+> There is also a `.github/copilot-instructions.md` aimed at GitHub Copilot.
+> The principles in this CLAUDE.md are intentionally aligned with that file —
+> if the two ever drift, treat the stricter rule as authoritative and update
+> both.
 
 ## Repository layout
 
@@ -16,7 +26,9 @@ PersonalWebsite/
 ├── PersonalWebsite.slnx          # Solution file (new XML format)
 ├── README.md                     # Minimal placeholder
 ├── LICENSE.txt
-├── .github/workflows/deploy.yml  # CI: builds on push to main
+├── .github/
+│   ├── copilot-instructions.md   # Companion AI guide (keep in sync with this file)
+│   └── workflows/deploy.yml      # CI: builds on push to main
 └── MyWebsite/                    # The Blazor WASM project
     ├── MyWebsite.csproj          # net10.0, MudBlazor 9.2.0
     ├── Program.cs                # WASM host setup, registers MudBlazor + HttpClient
@@ -62,6 +74,76 @@ PersonalWebsite/
 - Dark mode is the default and can be toggled from the app bar. The state lives
   on `MainLayout` (`_isDarkMode`).
 
+## Core principles
+
+These are the non-negotiable rules for any code suggestion. They mirror
+`.github/copilot-instructions.md`.
+
+### 1. MudBlazor first
+
+- **Always prefer MudBlazor components** over plain HTML elements. Do not use
+  `<div>`, `<span>`, `<p>`, `<h1>`, etc. when a MudBlazor equivalent exists
+  (`MudContainer`, `MudStack`, `MudGrid`, `MudItem`, `MudPaper`, `MudText`,
+  `MudButton`, `MudIcon`, …).
+- Use built-in MudBlazor props (`Spacing`, `Justify`, `AlignItems`, `Elevation`,
+  `Typo`, `MaxWidth`, `Variant`, `Color`, …) for layout and visual configuration
+  before reaching for CSS.
+- The one current exception is the `<section id="...">` wrappers used by each
+  page component. They exist because `wwwroot/js/sectionObserver.js` queries
+  `section[id]` to drive nav highlighting. Keep using `<section>` here until
+  the observer is replaced — do **not** introduce new raw HTML elements
+  elsewhere.
+
+### 2. Styling strategy
+
+- **All custom CSS lives in `wwwroot/css/app.css`.**
+- Define reusable classes there and apply them to MudBlazor components via the
+  `Class` attribute, e.g.:
+  ```razor
+  <MudContainer MaxWidth="MaxWidth.Large" Class="hero-section">
+      ...
+  </MudContainer>
+  ```
+- **Do NOT use the `Style="..."` attribute.** Inline styles are forbidden on
+  both MudBlazor components and HTML elements.
+- **Do NOT add `<style>` blocks** inside `.razor` files, and do not introduce
+  scoped `*.razor.css` files (none exist today; the `MyWebsite.styles.css`
+  link in `index.html` is intentionally commented out).
+- When a new visual treatment is needed, add a class to `app.css` first, then
+  reference it via `Class`.
+
+### 3. Minimal JavaScript
+
+- **Avoid JavaScript whenever possible.** Solve problems with C#, MudBlazor,
+  HTML and CSS first.
+- Prefer CSS-only solutions for animations, transitions, hover states,
+  scroll effects and responsive behavior.
+- Only fall back to JS / JSInterop when there is no reasonable C# or CSS
+  alternative, and document *why* in the code. The existing
+  `js/sectionObserver.js` is the canonical example: it uses
+  `IntersectionObserver` because Blazor has no built-in equivalent.
+- New interop modules must follow the `sectionObserver` pattern: a namespaced
+  object on `window` with explicit `init` / `dispose`, registered as a
+  `<script>` tag in `index.html`, and disposed from the consuming component's
+  `IAsyncDisposable` implementation.
+
+### 4. Razor page cleanliness
+
+- Razor markup must be **declarative and minimal** — composition only, no
+  styling noise, no business logic.
+- Push non-trivial logic into a code-behind partial (`*.razor.cs`) or a
+  service. `Layout/MainLayout.razor.cs` is the reference example.
+- Keep components small and composable; one section per file under `Pages/`.
+
+### Quick checklist before committing
+
+- [ ] Am I using a MudBlazor component instead of a raw HTML element?
+- [ ] Did I avoid `Style="..."` and put any styling in `app.css` as a class?
+- [ ] Did I avoid adding JavaScript when CSS or C# would work?
+- [ ] Is the razor markup clean, free of inline styling and free of `<style>`?
+- [ ] Will any new exceptions be observable via Sentry?
+- [ ] Does `dotnet publish MyWebsite -c Release` still succeed?
+
 ## Conventions
 
 ### Razor / C#
@@ -79,11 +161,17 @@ PersonalWebsite/
 
 1. Create `MyWebsite/Pages/<Name>.razor`. **Do not** add an `@page` directive.
 2. Wrap the content in `<section id="<name>" class="page-section"> … </section>`
-   so the IntersectionObserver and the nav buttons can target it.
-3. Use MudBlazor components (`MudContainer`, `MudStack`, `MudText`, …) for
-   layout and typography – avoid hand-rolled CSS where a Mud component exists.
-4. Reference the new component from `Home.razor` in the desired order.
-5. Add a corresponding `MudButton Href="#<name>"` to the nav stack in
+   so the IntersectionObserver and the nav buttons can target it. This is the
+   only place a raw HTML element should appear in a page component (see "Core
+   principles → MudBlazor first").
+3. Inside the section, use MudBlazor components (`MudContainer`, `MudStack`,
+   `MudText`, `MudGrid`, …) for layout and typography. Configure them with
+   MudBlazor props (`Spacing`, `Justify`, `AlignItems`, `Typo`, …).
+4. If a new visual treatment is needed, add a class to `wwwroot/css/app.css`
+   and apply it via `Class="..."`. Never use `Style="..."` or inline `<style>`
+   blocks.
+5. Reference the new component from `Home.razor` in the desired order.
+6. Add a corresponding `MudButton Href="#<name>"` to the nav stack in
    `Layout/MainLayout.razor`.
 
 ### Adding a new routed page (rare)
@@ -140,15 +228,30 @@ There are currently **no unit tests** in this repository. If you add a test
 project, place it as a sibling of `MyWebsite/` and add it to
 `PersonalWebsite.slnx`.
 
-## CI / deployment
+## Error monitoring (Sentry)
 
-`.github/workflows/deploy.yml` runs on every push to `main` (and on manual
-dispatch). It checks out the repo, installs `dotnet 10.0.x`, and runs
-`dotnet publish MyWebsite -c Release`. There is no actual upload step yet, so
-treat this as a build smoke-test for now.
+- All unhandled exceptions and meaningful runtime errors should be captured by
+  Sentry. Use the Sentry .NET / Blazor SDK and configure it during application
+  startup in `Program.cs`.
+- **Never** log secrets or PII to Sentry — scrub user-supplied content before
+  attaching it to events / breadcrumbs.
+- Sentry is **not yet wired up** in `Program.cs`. Until it is, treat the
+  Sentry rules as the target state: any new error-handling code should be
+  written so it will route through Sentry once the SDK is registered.
 
-When making changes, make sure `dotnet publish MyWebsite -c Release` succeeds
-locally before pushing.
+## Deployment
+
+- The site is hosted on **Cloudflare Pages** as a static WebAssembly bundle.
+- There is **no server-side runtime** at request time. Do not introduce
+  features that need one (server-side rendering, server endpoints, SignalR,
+  in-process databases, etc.). Use external HTTP APIs or static data instead.
+- `.github/workflows/deploy.yml` runs on every push to `main` (and on manual
+  dispatch). Today it only checks out the repo, installs `dotnet 10.0.x`, and
+  runs `dotnet publish MyWebsite -c Release` — there is no upload step yet, so
+  treat the workflow as a build smoke-test. Cloudflare Pages currently builds
+  the site itself from the connected GitHub repo.
+- Before pushing, make sure `dotnet publish MyWebsite -c Release` succeeds
+  locally.
 
 ## Working in this repo as Claude
 
