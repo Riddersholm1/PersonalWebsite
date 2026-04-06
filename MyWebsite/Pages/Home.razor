@@ -1,21 +1,84 @@
-﻿@page "/"
+@page "/"
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Jesper Bruhn Riddersholm – Portfolio</PageTitle>
 
 <section id="home" class="hero-section">
-    <MudContainer MaxWidth="MaxWidth.Large">
-        <MudStack AlignItems="AlignItems.Center" Justify="Justify.Center" Spacing="3">
-            <MudText Typo="Typo.h1">Jesper Bruhn Riddersholm</MudText>
-            <MudText Typo="Typo.h3">Softwareudvikler | .NET &amp; Blazor Specialist</MudText>
-            <MudText Typo="Typo.body1">
-                Passioneret softwareudvikler med fokus på moderne webapplikationer med .NET og Blazor.
-                Jeg omdanner komplekse problemer til elegante og brugervenlige løsninger.
-            </MudText>
-            <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.Center" Spacing="2">
-                <MudButton Href="#projects" Variant="Variant.Filled">Se mine projekter</MudButton>
-                <MudButton Href="#contact" Variant="Variant.Outlined">Kontakt mig</MudButton>
-            </MudStack>
-        </MudStack>
+    <MudContainer MaxWidth="MaxWidth.Large" Class="hero-container">
+        <MudGrid Spacing="6" Justify="Justify.Center">
+            <MudItem xs="12" md="7">
+                <MudStack Spacing="4">
+                    <MudChip T="string"
+                             Color="Color.Primary"
+                             Variant="Variant.Outlined"
+                             Icon="@Icons.Material.Filled.Code"
+                             Class="hero-eyebrow">
+                        .NET &amp; Blazor Specialist
+                    </MudChip>
+
+                    <MudText Typo="Typo.h2" Class="hero-title">
+                        Hej, jeg er <span class="hero-accent">Jesper</span>.
+                    </MudText>
+
+                    <MudText Typo="Typo.h5" Class="hero-subtitle">
+                        Softwareudvikler der bygger moderne, vedligeholdbare webapplikationer.
+                    </MudText>
+
+                    <MudText Typo="Typo.body1" Class="hero-lead">
+                        Jeg omdanner komplekse problemer til elegante og brugervenlige løsninger
+                        med fokus på .NET, Blazor og en gennemtænkt brugeroplevelse.
+                    </MudText>
+
+                    <MudStack Row Spacing="3" Class="hero-actions">
+                        <MudButton Href="#projects"
+                                   Variant="Variant.Filled"
+                                   Color="Color.Primary"
+                                   Size="Size.Large"
+                                   EndIcon="@Icons.Material.Filled.ArrowForward">
+                            Se mine projekter
+                        </MudButton>
+                        <MudButton Href="#contact"
+                                   Variant="Variant.Outlined"
+                                   Color="Color.Primary"
+                                   Size="Size.Large"
+                                   StartIcon="@Icons.Material.Filled.Mail">
+                            Kontakt mig
+                        </MudButton>
+                    </MudStack>
+
+                    <MudStack Row Spacing="4" AlignItems="AlignItems.Center" Class="hero-meta">
+                        <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
+                            <MudIcon Icon="@Icons.Material.Filled.LocationOn" Size="Size.Small" Color="Color.Primary" />
+                            <MudText Typo="Typo.body2">Rødekro, Danmark</MudText>
+                        </MudStack>
+                        <MudStack Row Spacing="1" AlignItems="AlignItems.Center">
+                            <MudIcon Icon="@Icons.Material.Filled.Work" Size="Size.Small" Color="Color.Primary" />
+                            <MudText Typo="Typo.body2">AL Sydbank</MudText>
+                        </MudStack>
+                    </MudStack>
+                </MudStack>
+            </MudItem>
+
+            <MudItem xs="12" md="5">
+                <MudPaper Elevation="6" Class="hero-card">
+                    <MudStack Spacing="4" AlignItems="AlignItems.Center">
+                        <MudAvatar Color="Color.Primary" Class="hero-avatar">JR</MudAvatar>
+                        <MudStack Spacing="1" AlignItems="AlignItems.Center">
+                            <MudText Typo="Typo.h6" Align="Align.Center">Jesper Bruhn Riddersholm</MudText>
+                            <MudText Typo="Typo.body2" Align="Align.Center" Class="hero-card-subtitle">
+                                Softwareudvikler hos AL Sydbank
+                            </MudText>
+                        </MudStack>
+                        <MudDivider FlexItem="true" />
+                        <MudStack Row Spacing="2" Justify="Justify.Center" Class="hero-tech-stack">
+                            <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Filled">.NET 10</MudChip>
+                            <MudChip T="string" Size="Size.Small" Color="Color.Secondary" Variant="Variant.Filled">Blazor</MudChip>
+                            <MudChip T="string" Size="Size.Small" Color="Color.Tertiary" Variant="Variant.Filled">C#</MudChip>
+                            <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined">MudBlazor</MudChip>
+                        </MudStack>
+                    </MudStack>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
     </MudContainer>
 </section>
 
