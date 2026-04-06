@@ -1,4 +1,8 @@
-html,
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
 body,
 #app {
     height: 100%;
@@ -25,22 +29,14 @@ footer {
     margin-top: auto;
 }
 
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
-}
-
-.invalid {
-    outline: 1px solid red;
-}
-
-.validation-message {
-    color: red;
+code {
+    color: #c02d76;
 }
 
 #blazor-error-ui {
-    color-scheme: light only;
     background: lightyellow;
     bottom: 0;
+    box-shadow: 0 -1px 2px #000000;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     display: none;
@@ -51,7 +47,7 @@ footer {
     z-index: 1000;
 }
 
-    #blazor-error-ui .dismiss {
+#blazor-error-ui .dismiss {
         cursor: pointer;
         position: absolute;
         right: 0.75rem;
@@ -87,7 +83,7 @@ footer {
 
         .loading-progress circle:last-child {
             stroke: #1b6ec2;
-            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
+            stroke-dasharray: calc(3.141 * 0 * 0.8), 500%;
             transition: stroke-dasharray 0.05s ease-in-out;
         }
 
@@ -99,12 +95,8 @@ footer {
 }
 
     .loading-progress-text:after {
-        content: var(--blazor-load-percentage-text, "Loading");
+        content: "Loading";
     }
-
-code {
-    color: #c02d76;
-}
 
 /* Page sections */
 .hero-section {
@@ -117,16 +109,14 @@ code {
     padding: 4rem 0;
 }
 
-.footer-container {
-    padding: 2rem 0;
-    text-align: center;
+.chip-row {
+    flex-wrap: wrap;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-    color: var(--bs-secondary-color);
-    text-align: end;
+.experience-card {
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-    text-align: start;
+.experience-card:hover {
+    transform: translateY(-2px);
 }

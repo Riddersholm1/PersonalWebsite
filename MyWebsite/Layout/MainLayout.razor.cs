@@ -5,61 +5,41 @@ namespace MyWebsite.Layout;
 
 public partial class MainLayout : IAsyncDisposable
 {
-    private static readonly string[] SectionIds = ["home", "about", "skills", "experience", "projects", "education", "contact"];
-
     [Inject]
-    private IJSRuntime JSRuntime { get; set; } = null!;
+    private IJSRuntime JS { get; set; } = null!;
 
-    private IJSObjectReference? _module;
-    private DotNetObjectReference<MainLayout>? _dotNetReference;
     private bool _isDarkMode = true;
     private string _activeSection = "home";
+    private DotNetObjectReference<MainLayout>? _dotNetRef;
 
-    protected override void OnInitialized()
-    {
-        _isDarkMode = true;
-    }
+    private bool IsActiveSection(string sectionId) =>
+        string.Equals(_activeSection, sectionId, StringComparison.OrdinalIgnoreCase);
+
+    private void ToggleTheme() => _isDarkMode = !_isDarkMode;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!firstRender)
+        if (firstRender)
         {
-            return;
+            _dotNetRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("sectionObserver.init", _dotNetRef);
         }
-
-        _module = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/scrollSpy.js");
-        _dotNetReference = DotNetObjectReference.Create(this);
-        await _module.InvokeVoidAsync("initializeScrollSpy", _dotNetReference, SectionIds);
     }
 
     [JSInvokable]
-    public Task SetActiveSection(string section)
+    public void SetActiveSection(string sectionId)
     {
-        if (string.Equals(_activeSection, section, StringComparison.OrdinalIgnoreCase))
-        {
-            return Task.CompletedTask;
-        }
-
-        _activeSection = section;
-        return InvokeAsync(StateHasChanged);
-    }
-
-    private bool IsActiveSection(string section)
-        => string.Equals(_activeSection, section, StringComparison.OrdinalIgnoreCase);
-
-    private void ToggleTheme()
-    {
-        _isDarkMode = !_isDarkMode;
+        _activeSection = sectionId;
+        StateHasChanged();
     }
 
     public async ValueTask DisposeAsync()
     {
-        if (_module is not null)
+        if (_dotNetRef is not null)
         {
-            await _module.InvokeVoidAsync("disposeScrollSpy");
-            await _module.DisposeAsync();
+            await JS.InvokeVoidAsync("sectionObserver.dispose");
+            _dotNetRef.Dispose();
+            GC.SuppressFinalize(this);
         }
-
-        _dotNetReference?.Dispose();
     }
 }

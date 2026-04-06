@@ -1,13 +1,14 @@
-﻿@page "/contact"
-
-<section id="contact">
+﻿<section id="contact" class="page-section">
     <MudContainer MaxWidth="MaxWidth.Medium">
-        <MudStack Spacing="3">
-            <MudText Typo="Typo.h3">Contact</MudText>
-            <MudText Typo="Typo.body1">Get in touch through one of the links below.</MudText>
+        <MudStack Spacing="4">
+            <MudText Typo="Typo.h3">Kontakt</MudText>
+            <MudText Typo="Typo.body1">
+                Har du et spørgsmål eller vil du samarbejde? Du er velkommen til at tage fat i mig.
+            </MudText>
             <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-                <MudButton Href="mailto:jesper@example.com" Variant="Variant.Filled">Email</MudButton>
+                <MudButton Href="mailto:jesper@example.com" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Email">E-mail</MudButton>
                 <MudButton Href="https://www.linkedin.com/in/jesper-riddersholm/" Target="_blank" Variant="Variant.Outlined">LinkedIn</MudButton>
+                <MudButton Href="https://github.com/Riddersholm1" Target="_blank" Variant="Variant.Outlined">GitHub</MudButton>
             </MudStack>
         </MudStack>
     </MudContainer>

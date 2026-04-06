@@ -1,11 +1,192 @@
-﻿@page "/experience"
-
-<section id="experience">
+﻿<section id="experience" class="page-section">
     <MudContainer MaxWidth="MaxWidth.Medium">
-        <MudStack Spacing="3">
-            <MudText Typo="Typo.h3">Experience</MudText>
-            <MudText Typo="Typo.body1">Software developer at Sydbank, focusing on scalable and maintainable web solutions.</MudText>
+        <MudStack Spacing="4">
+            <MudText Typo="Typo.h3">Erfaring</MudText>
+
+            <MudTimeline TimelinePosition="TimelinePosition.Left">
+
+                <MudTimelineItem Color="Color.Primary" Icon="@Icons.Material.Filled.Work"
+                                 Size="Size.Medium" Variant="Variant.Filled">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">aug. 2024 – nu</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="2" Class="pa-4 experience-card">
+                            <MudStack Spacing="2">
+                                <MudText Typo="Typo.h6">Softwareudvikler</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Primary">Sydbank &middot; Aabenraa, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Fuldtid &middot; På arbejdspladsen</MudText>
+                                <MudDivider />
+                                <MudText Typo="Typo.body2">
+                                    Udvikling af applikationer til internt brug i Sydbank med fokus på at levere softwareprodukter af høj kvalitet.
+                                </MudText>
+                                <MudStack Row Class="chip-row" Spacing="1">
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Blazor</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">.NET</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Azure AI</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">MsSQL</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Scrum</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">REST</MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+                <MudTimelineItem Color="Color.Primary" Icon="@Icons.Material.Filled.Work"
+                                 Size="Size.Medium" Variant="Variant.Filled">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">sep. 2022 – aug. 2024</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="2" Class="pa-4 experience-card">
+                            <MudStack Spacing="2">
+                                <MudText Typo="Typo.h6">Softwareudvikler</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Primary">Danfoss &middot; Kolding, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Fuldtid &middot; 2 år</MudText>
+                                <MudDivider />
+                                <MudText Typo="Typo.body2">
+                                    Ansvar for at udvikle applikationer til planlægning og optimering af fjernvarmeproduktion.
+                                    Integrering med det danske spotmarked for el med mulighed for handel på det danske balancemarked.
+                                </MudText>
+                                <MudStack Row Class="chip-row" Spacing="1">
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">C#</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Windows Forms</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">MySQL</MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+                <MudTimelineItem Color="Color.Secondary" Icon="@Icons.Material.Filled.Work"
+                                 Size="Size.Medium" Variant="Variant.Filled">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">mar. 2022 – aug. 2022</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="2" Class="pa-4 experience-card">
+                            <MudStack Spacing="2">
+                                <MudText Typo="Typo.h6">Studiemedarbejder</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Vestas &middot; Aarhus, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Deltid &middot; 6 mdr.</MudText>
+                                <MudDivider />
+                                <MudText Typo="Typo.body2">
+                                    Ansvar for at udvikle et softwareprodukt til et grafisk panel i en nacelle.
+                                </MudText>
+                                <MudStack Row Class="chip-row" Spacing="1">
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">C++</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">Python</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">JSON</MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+                <MudTimelineItem Color="Color.Info" Icon="@Icons.Material.Filled.School"
+                                 Size="Size.Medium" Variant="Variant.Filled">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">feb. 2021 – maj 2022</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="2" Class="pa-4 experience-card">
+                            <MudStack Spacing="2">
+                                <MudText Typo="Typo.h6">Faglig støttementor</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Info">Aarhus Universitet &middot; Aarhus, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Deltid &middot; 1 år 4 mdr.</MudText>
+                                <MudDivider />
+                                <MudText Typo="Typo.body2">
+                                    Faglig støtte og studieplanlægning for andre ingeniørstuderende på Aarhus Universitet.
+                                </MudText>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+                <MudTimelineItem Color="Color.Secondary" Icon="@Icons.Material.Filled.Engineering"
+                                 Size="Size.Medium" Variant="Variant.Filled">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">feb. 2020 – jul. 2020</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="2" Class="pa-4 experience-card">
+                            <MudStack Spacing="2">
+                                <MudText Typo="Typo.h6">Ingeniørpraktikant</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">LINAK &middot; Sønderborg, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Praktik &middot; 6 mdr.</MudText>
+                                <MudDivider />
+                                <MudText Typo="Typo.body2">
+                                    Ansvar for udvikling af nyt testudstyr med det formål at optimere produktion og test af LINAKs produkter.
+                                </MudText>
+                                <MudStack Row Class="chip-row" Spacing="1">
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">C++</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">LabVIEW</MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+                <MudTimelineItem Color="Color.Default" Icon="@Icons.Material.Filled.Work"
+                                 Size="Size.Small" Variant="Variant.Outlined">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">okt. 2018 – dec. 2018</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="1" Class="pa-3 experience-card">
+                            <MudStack Spacing="1">
+                                <MudText Typo="Typo.subtitle1">Projektassistent</MudText>
+                                <MudText Typo="Typo.subtitle2">ELO Digital Nordic &middot; Aarhus, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Deltid &middot; 3 mdr.</MudText>
+                                <MudText Typo="Typo.body2">Opsætning af Java-baseret ECM-software til små virksomheder.</MudText>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+                <MudTimelineItem Color="Color.Default" Icon="@Icons.Material.Filled.Work"
+                                 Size="Size.Small" Variant="Variant.Outlined">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">nov. 2017 – jan. 2018</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="1" Class="pa-3 experience-card">
+                            <MudStack Spacing="1">
+                                <MudText Typo="Typo.subtitle1">Vikar</MudText>
+                                <MudText Typo="Typo.subtitle2">Sydbank &middot; Rødekro, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Fuldtid &middot; 3 mdr.</MudText>
+                                <MudText Typo="Typo.body2">
+                                    Opgaver af administrativ karakter, registrering af data og beregninger af data på enkeltkundeniveau.
+                                </MudText>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+                <MudTimelineItem Color="Color.Default" Icon="@Icons.Material.Filled.People"
+                                 Size="Size.Small" Variant="Variant.Outlined">
+                    <ItemOpposite>
+                        <MudText Typo="Typo.caption">apr. 2014 – jun. 2017</MudText>
+                    </ItemOpposite>
+                    <ItemContent>
+                        <MudPaper Elevation="1" Class="pa-3 experience-card">
+                            <MudStack Spacing="1">
+                                <MudText Typo="Typo.subtitle1">Træner</MudText>
+                                <MudText Typo="Typo.subtitle2">McDonald's &middot; Tønder, Danmark</MudText>
+                                <MudText Typo="Typo.caption">Deltid &middot; 3 år 3 mdr.</MudText>
+                                <MudText Typo="Typo.body2">
+                                    Træning og oplæring af nye medarbejdere, vært, køkkenansvarlig samt kvartalets og årets medarbejder.
+                                </MudText>
+                            </MudStack>
+                        </MudPaper>
+                    </ItemContent>
+                </MudTimelineItem>
+
+            </MudTimeline>
         </MudStack>
     </MudContainer>
 </section>
+
+
 

@@ -1,24 +1,53 @@
-﻿<section id="projects">
+﻿<section id="projects" class="page-section">
     <MudContainer MaxWidth="MaxWidth.Large">
-        <MudStack Spacing="3">
-            <MudText Typo="Typo.h3">Projects</MudText>
+        <MudStack Spacing="4">
+            <MudText Typo="Typo.h3">Projekter</MudText>
 
-            <MudCard>
-                <MudImage Src="images/projects/stockapp.jpg" Alt="Stock Insight" />
-                <MudCardContent>
-                    <MudStack Spacing="2">
-                        <MudText Typo="Typo.h6">Stock Insight Tool</MudText>
-                        <MudText Typo="Typo.body2">
-                            A Blazor app that retrieves and visualizes stock fundamentals using free APIs.
-                        </MudText>
-                    </MudStack>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Href="https://github.com/username/stock-insight" Target="_blank" Variant="Variant.Text">
-                        GitHub
-                    </MudButton>
-                </MudCardActions>
-            </MudCard>
+            <MudGrid>
+                <MudItem xs="12" sm="6">
+                    <MudCard>
+                        <MudCardContent>
+                            <MudStack Spacing="2">
+                                <MudText Typo="Typo.h6">Personlig hjemmeside</MudText>
+                                <MudText Typo="Typo.body2">
+                                    Denne hjemmeside &ndash; bygget med Blazor WebAssembly og MudBlazor.
+                                    Hostet på Cloudflare Pages via GitHub.
+                                </MudText>
+                                <MudStack Row Class="chip-row" Spacing="1">
+                                    <MudChip T="string" Size="Size.Small">Blazor</MudChip>
+                                    <MudChip T="string" Size="Size.Small">.NET</MudChip>
+                                    <MudChip T="string" Size="Size.Small">MudBlazor</MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Href="https://github.com/Riddersholm1/PersonalWebsite" Target="_blank" Variant="Variant.Text">GitHub</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+
+                <MudItem xs="12" sm="6">
+                    <MudCard>
+                        <MudCardContent>
+                            <MudStack Spacing="2">
+                                <MudText Typo="Typo.h6">Stock Insight Værktøj</MudText>
+                                <MudText Typo="Typo.body2">
+                                    En Blazor-applikation der henter og visualiserer aktie-fundamentaler
+                                    ved hjælp af gratis API'er.
+                                </MudText>
+                                <MudStack Row Class="chip-row" Spacing="1">
+                                    <MudChip T="string" Size="Size.Small">Blazor</MudChip>
+                                    <MudChip T="string" Size="Size.Small">C#</MudChip>
+                                    <MudChip T="string" Size="Size.Small">API</MudChip>
+                                </MudStack>
+                            </MudStack>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton Href="https://github.com/Riddersholm1" Target="_blank" Variant="Variant.Text">GitHub</MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
         </MudStack>
     </MudContainer>
 </section>
