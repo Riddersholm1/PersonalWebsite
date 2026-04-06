@@ -1,6 +1,0 @@
-@import "tailwindcss";
-
-/* Scan all Razor components and HTML for Tailwind classes */
-@source "../../**/*.razor";
-@source "../../**/*.razor.cs";
-@source "../../**/*.html";

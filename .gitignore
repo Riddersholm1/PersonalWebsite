@@ -497,5 +497,3 @@ $RECYCLE.BIN/
 
 # Environment specific appsettings files
 appsettings.*.json
-# Tailwind CSS generated output
-MyWebsite/wwwroot/css/tailwind.output.css

@@ -43,7 +43,7 @@ public static class MudBlazorTheme
                 // Action
                 ActionDefault = "#4A5568",
                 ActionDisabled = "#A0AEC0",
-                ActionDisabledBackground = "#EDF2F7",
+                ActionDisabledBackground = "#EDF2F7"
             },
             PaletteDark =
             {
@@ -81,7 +81,7 @@ public static class MudBlazorTheme
                 // Action
                 ActionDefault = "#8FA3C8",
                 ActionDisabled = "#4A5568",
-                ActionDisabledBackground = "#1E293B",
+                ActionDisabledBackground = "#1E293B"
             },
             LayoutProperties = new LayoutProperties { AppbarHeight = "75px" }
         };

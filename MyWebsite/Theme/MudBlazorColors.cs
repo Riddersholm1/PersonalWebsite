@@ -18,7 +18,4 @@ public static class MudBlazorColors
     public static MudColor BackgroundDark => new("#101827");
     public static MudColor DrawerBackgroundDark => new("#0D1422");
     public static MudColor SurfaceDark => new("#182034");
-
-    // Legacy / accent
-    public static MudColor ALColor => new("#af1e2d");
 }
