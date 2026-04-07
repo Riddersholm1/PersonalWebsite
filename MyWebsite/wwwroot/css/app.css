@@ -98,7 +98,22 @@ code {
         content: "Loading";
     }
 
-/* Page sections */
+/* ============================================================
+   Global page background — single soft gradient that flows
+   underneath every section so the whole page feels tied together
+   ============================================================ */
+.mud-main-content {
+    position: relative;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(36, 86, 180, 0.10), transparent 45%),
+        radial-gradient(circle at 88% 35%, rgba(26, 164, 184, 0.08), transparent 45%),
+        radial-gradient(circle at 18% 70%, rgba(99, 102, 241, 0.07), transparent 45%),
+        radial-gradient(circle at 85% 95%, rgba(36, 86, 180, 0.08), transparent 45%);
+}
+
+/* ============================================================
+   Hero section
+   ============================================================ */
 .hero-section {
     min-height: calc(100vh - 75px);
     display: flex;
@@ -106,8 +121,8 @@ code {
     position: relative;
     overflow: hidden;
     background:
-        radial-gradient(circle at 15% 20%, rgba(36, 86, 180, 0.18), transparent 55%),
-        radial-gradient(circle at 85% 80%, rgba(26, 164, 184, 0.16), transparent 55%);
+        radial-gradient(circle at 15% 20%, rgba(36, 86, 180, 0.22), transparent 55%),
+        radial-gradient(circle at 85% 80%, rgba(26, 164, 184, 0.18), transparent 55%);
 }
 
 .hero-container {
@@ -183,13 +198,39 @@ code {
     justify-content: center;
 }
 
+/* ============================================================
+   Page sections — alternating subtle accents tie everything
+   together with the hero gradient
+   ============================================================ */
 .page-section {
     padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Shared section heading */
+.page-section-alt {
+    background:
+        radial-gradient(circle at 90% 15%, rgba(36, 86, 180, 0.07), transparent 50%),
+        radial-gradient(circle at 10% 85%, rgba(26, 164, 184, 0.06), transparent 50%);
+}
+
+/* ============================================================
+   Shared section heading
+   ============================================================ */
 .section-heading {
     margin-bottom: 1rem;
+}
+
+.section-heading .mud-typography-overline {
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    opacity: 0.9;
+}
+
+.section-heading .mud-typography-h3 {
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
 }
 
 .section-divider {
@@ -200,7 +241,9 @@ code {
     margin-top: 0.5rem;
 }
 
-/* About section */
+/* ============================================================
+   About section
+   ============================================================ */
 .about-paragraph {
     line-height: 1.8;
     opacity: 0.9;
@@ -212,7 +255,47 @@ code {
     height: 100%;
 }
 
-/* Contact section */
+/* ============================================================
+   Skills section
+   ============================================================ */
+.skill-category-title {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   Projects section
+   ============================================================ */
+.project-card {
+    height: 100%;
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 32px rgba(36, 86, 180, 0.18);
+}
+
+.project-card .mud-card-content {
+    flex: 1 1 auto;
+    padding: 2rem;
+}
+
+.project-card .mud-card-actions {
+    padding: 0.5rem 1.5rem 1.25rem;
+}
+
+.project-description {
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+/* ============================================================
+   Contact section
+   ============================================================ */
 .contact-lead {
     max-width: 36rem;
     opacity: 0.85;
@@ -229,11 +312,15 @@ code {
     height: 100%;
 }
 
+/* ============================================================
+   Chips & cards
+   ============================================================ */
 .chip-row {
     flex-wrap: wrap;
 }
 
 .experience-card {
+    border-radius: 12px;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -241,6 +328,48 @@ code {
     transform: translateY(-2px);
 }
 
+.experience-card-minor {
+    opacity: 0.85;
+}
+
+.experience-card-minor .mud-typography-h6 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ============================================================
+   Footer — proper breathing room above social icons
+   ============================================================ */
+footer {
+    margin-top: auto;
+    padding: 4rem 1.5rem 2.5rem;
+    background: transparent;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(640px, 80%);
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--mud-palette-lines-default) 50%,
+        transparent 100%);
+}
+
+footer .mud-paper {
+    background: transparent;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
 @media (max-width: 960px) {
     .hero-section {
         min-height: auto;
@@ -257,5 +386,9 @@ code {
 
     .hero-eyebrow {
         align-self: center;
+    }
+
+    footer {
+        padding: 3rem 1rem 2rem;
     }
 }

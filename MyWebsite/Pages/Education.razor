@@ -1,11 +1,15 @@
-﻿<section id="education" class="page-section">
+<section id="education" class="page-section">
     <MudContainer MaxWidth="MaxWidth.Medium">
-        <MudStack Spacing="4">
-            <MudText Typo="Typo.h3">Uddannelse</MudText>
+        <MudStack Spacing="6">
+            <MudStack Spacing="2" AlignItems="AlignItems.Center" Class="section-heading">
+                <MudText Typo="Typo.overline" Color="Color.Primary">Akademisk baggrund</MudText>
+                <MudText Typo="Typo.h3" Align="Align.Center">Uddannelse</MudText>
+                <MudDivider Class="section-divider" />
+            </MudStack>
 
             <MudTimeline TimelinePosition="TimelinePosition.Left">
 
-                <MudTimelineItem Color="Color.Secondary" Icon="@Icons.Material.Filled.School"
+                <MudTimelineItem Color="Color.Primary" Icon="@Icons.Material.Filled.School"
                                  Size="Size.Medium" Variant="Variant.Filled">
                     <ItemOpposite>
                         <MudText Typo="Typo.caption">sep. 2021 – feb. 2022</MudText>
@@ -14,7 +18,7 @@
                         <MudPaper Elevation="2" Class="pa-4 experience-card">
                             <MudStack Spacing="1">
                                 <MudText Typo="Typo.h6">Forretningsspecialisering</MudText>
-                                <MudText Typo="Typo.subtitle2" Color="Color.Secondary">Aarhus Universitet</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Primary">Aarhus Universitet</MudText>
                                 <MudText Typo="Typo.caption">Forretning</MudText>
                             </MudStack>
                         </MudPaper>
@@ -43,9 +47,9 @@
                         <MudText Typo="Typo.caption">aug. 2013 – jun. 2016</MudText>
                     </ItemOpposite>
                     <ItemContent>
-                        <MudPaper Elevation="1" Class="pa-3 experience-card">
+                        <MudPaper Elevation="1" Class="pa-3 experience-card experience-card-minor">
                             <MudStack Spacing="1">
-                                <MudText Typo="Typo.subtitle1">STX</MudText>
+                                <MudText Typo="Typo.h6">STX</MudText>
                                 <MudText Typo="Typo.subtitle2">Tønder Gymnasium</MudText>
                                 <MudText Typo="Typo.caption">Naturvidenskabelig linje</MudText>
                             </MudStack>
@@ -57,5 +61,3 @@
         </MudStack>
     </MudContainer>
 </section>
-
-
