@@ -1,7 +1,11 @@
-﻿<section id="experience" class="page-section">
+<section id="experience" class="page-section page-section-alt">
     <MudContainer MaxWidth="MaxWidth.Medium">
-        <MudStack Spacing="4">
-            <MudText Typo="Typo.h3">Erfaring</MudText>
+        <MudStack Spacing="6">
+            <MudStack Spacing="2" AlignItems="AlignItems.Center" Class="section-heading">
+                <MudText Typo="Typo.overline" Color="Color.Primary">Min rejse</MudText>
+                <MudText Typo="Typo.h3" Align="Align.Center">Erfaring</MudText>
+                <MudDivider Class="section-divider" />
+            </MudStack>
 
             <MudTimeline TimelinePosition="TimelinePosition.Left">
 
@@ -21,12 +25,12 @@
                                     Udvikling af applikationer til internt brug i Sydbank med fokus på at levere softwareprodukter af høj kvalitet.
                                 </MudText>
                                 <MudStack Row Class="chip-row" Spacing="1">
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Blazor</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">.NET</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Azure AI</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">MsSQL</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Scrum</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">REST</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">Blazor</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">.NET</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">Azure AI</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">MsSQL</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">Scrum</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">REST</MudChip>
                                 </MudStack>
                             </MudStack>
                         </MudPaper>
@@ -50,9 +54,9 @@
                                     Integrering med det danske spotmarked for el med mulighed for handel på det danske balancemarked.
                                 </MudText>
                                 <MudStack Row Class="chip-row" Spacing="1">
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">C#</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">Windows Forms</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary">MySQL</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">C#</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">Windows Forms</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined">MySQL</MudChip>
                                 </MudStack>
                             </MudStack>
                         </MudPaper>
@@ -75,16 +79,16 @@
                                     Ansvar for at udvikle et softwareprodukt til et grafisk panel i en nacelle.
                                 </MudText>
                                 <MudStack Row Class="chip-row" Spacing="1">
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">C++</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">Python</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">JSON</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary" Variant="Variant.Outlined">C++</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary" Variant="Variant.Outlined">Python</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary" Variant="Variant.Outlined">JSON</MudChip>
                                 </MudStack>
                             </MudStack>
                         </MudPaper>
                     </ItemContent>
                 </MudTimelineItem>
 
-                <MudTimelineItem Color="Color.Info" Icon="@Icons.Material.Filled.School"
+                <MudTimelineItem Color="Color.Tertiary" Icon="@Icons.Material.Filled.School"
                                  Size="Size.Medium" Variant="Variant.Filled">
                     <ItemOpposite>
                         <MudText Typo="Typo.caption">feb. 2021 – maj 2022</MudText>
@@ -93,7 +97,7 @@
                         <MudPaper Elevation="2" Class="pa-4 experience-card">
                             <MudStack Spacing="2">
                                 <MudText Typo="Typo.h6">Faglig støttementor</MudText>
-                                <MudText Typo="Typo.subtitle2" Color="Color.Info">Aarhus Universitet &middot; Aarhus, Danmark</MudText>
+                                <MudText Typo="Typo.subtitle2" Color="Color.Tertiary">Aarhus Universitet &middot; Aarhus, Danmark</MudText>
                                 <MudText Typo="Typo.caption">Deltid &middot; 1 år 4 mdr.</MudText>
                                 <MudDivider />
                                 <MudText Typo="Typo.body2">
@@ -120,8 +124,8 @@
                                     Ansvar for udvikling af nyt testudstyr med det formål at optimere produktion og test af LINAKs produkter.
                                 </MudText>
                                 <MudStack Row Class="chip-row" Spacing="1">
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">C++</MudChip>
-                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary">LabVIEW</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary" Variant="Variant.Outlined">C++</MudChip>
+                                    <MudChip T="string" Size="Size.Small" Color="Color.Secondary" Variant="Variant.Outlined">LabVIEW</MudChip>
                                 </MudStack>
                             </MudStack>
                         </MudPaper>
@@ -134,9 +138,9 @@
                         <MudText Typo="Typo.caption">okt. 2018 – dec. 2018</MudText>
                     </ItemOpposite>
                     <ItemContent>
-                        <MudPaper Elevation="1" Class="pa-3 experience-card">
+                        <MudPaper Elevation="1" Class="pa-3 experience-card experience-card-minor">
                             <MudStack Spacing="1">
-                                <MudText Typo="Typo.subtitle1">Projektassistent</MudText>
+                                <MudText Typo="Typo.h6">Projektassistent</MudText>
                                 <MudText Typo="Typo.subtitle2">ELO Digital Nordic &middot; Aarhus, Danmark</MudText>
                                 <MudText Typo="Typo.caption">Deltid &middot; 3 mdr.</MudText>
                                 <MudText Typo="Typo.body2">Opsætning af Java-baseret ECM-software til små virksomheder.</MudText>
@@ -151,9 +155,9 @@
                         <MudText Typo="Typo.caption">nov. 2017 – jan. 2018</MudText>
                     </ItemOpposite>
                     <ItemContent>
-                        <MudPaper Elevation="1" Class="pa-3 experience-card">
+                        <MudPaper Elevation="1" Class="pa-3 experience-card experience-card-minor">
                             <MudStack Spacing="1">
-                                <MudText Typo="Typo.subtitle1">Vikar</MudText>
+                                <MudText Typo="Typo.h6">Vikar</MudText>
                                 <MudText Typo="Typo.subtitle2">Sydbank &middot; Rødekro, Danmark</MudText>
                                 <MudText Typo="Typo.caption">Fuldtid &middot; 3 mdr.</MudText>
                                 <MudText Typo="Typo.body2">
@@ -170,9 +174,9 @@
                         <MudText Typo="Typo.caption">apr. 2014 – jun. 2017</MudText>
                     </ItemOpposite>
                     <ItemContent>
-                        <MudPaper Elevation="1" Class="pa-3 experience-card">
+                        <MudPaper Elevation="1" Class="pa-3 experience-card experience-card-minor">
                             <MudStack Spacing="1">
-                                <MudText Typo="Typo.subtitle1">Træner</MudText>
+                                <MudText Typo="Typo.h6">Træner</MudText>
                                 <MudText Typo="Typo.subtitle2">McDonald's &middot; Tønder, Danmark</MudText>
                                 <MudText Typo="Typo.caption">Deltid &middot; 3 år 3 mdr.</MudText>
                                 <MudText Typo="Typo.body2">
@@ -187,6 +191,3 @@
         </MudStack>
     </MudContainer>
 </section>
-
-
-
