@@ -29,5 +29,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          preCommands: wrangler pages project create ${{ vars.CF_PAGES_PROJECT_NAME }} --production-branch=main || true
           command: pages deploy MyWebsite/bin/Release/net10.0/publish/wwwroot --project-name=${{ vars.CF_PAGES_PROJECT_NAME }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
