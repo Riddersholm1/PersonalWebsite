@@ -1,20 +1,69 @@
-<section id="about" class="page-section">
-    <MudContainer MaxWidth="MaxWidth.Medium">
-        <MudStack Spacing="4">
-            <MudText Typo="Typo.h3">Om mig</MudText>
-            <MudText Typo="Typo.body1">
-                Jeg bor i Rødekro i Danmark og arbejder som softwareudvikler hos AL Sydbank.
-                Jeg er passioneret omkring .NET-stakken og nyder at bygge moderne, skalerbare og
-                vedligeholdbare webapplikationer med Blazor og C#.
-            </MudText>
-            <MudText Typo="Typo.body1">
-                Til daglig arbejder jeg med udvikling og vedligeholdelse af softwareløsninger,
-                der understøtter bankens processer og brugere.
-            </MudText>
-            <MudText Typo="Typo.body1">
-                I min fritid er jeg også en passioneret langsigtet investor og kan lide at analysere
-                virksomheder og bruge datadrevne tilgange til at træffe bedre investeringsbeslutninger.
-            </MudText>
+<section id="about" class="page-section about-section">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudStack Spacing="6">
+            <MudStack Spacing="2" AlignItems="AlignItems.Center" Class="section-heading">
+                <MudText Typo="Typo.overline" Color="Color.Primary">Hvem er jeg</MudText>
+                <MudText Typo="Typo.h3" Align="Align.Center">Om mig</MudText>
+                <MudDivider Class="section-divider" />
+            </MudStack>
+
+            <MudGrid Spacing="6" Justify="Justify.Center">
+                <MudItem xs="12" md="7">
+                    <MudStack Spacing="4">
+                        <MudText Typo="Typo.body1" Class="about-paragraph">
+                            Jeg bor i Rødekro i Danmark og arbejder som softwareudvikler hos AL Sydbank.
+                            Jeg er passioneret omkring .NET-stakken og nyder at bygge moderne, skalerbare og
+                            vedligeholdbare webapplikationer med Blazor og C#.
+                        </MudText>
+                        <MudText Typo="Typo.body1" Class="about-paragraph">
+                            Til daglig arbejder jeg med udvikling og vedligeholdelse af softwareløsninger,
+                            der understøtter bankens processer og brugere. Jeg lægger stor vægt på ren kode,
+                            tydelig arkitektur og en god udvikleroplevelse.
+                        </MudText>
+                        <MudText Typo="Typo.body1" Class="about-paragraph">
+                            I min fritid er jeg en passioneret langsigtet investor og kan lide at analysere
+                            virksomheder og bruge datadrevne tilgange til at træffe bedre investeringsbeslutninger.
+                        </MudText>
+                    </MudStack>
+                </MudItem>
+
+                <MudItem xs="12" md="5">
+                    <MudPaper Elevation="2" Class="about-card">
+                        <MudStack Spacing="4">
+                            <MudText Typo="Typo.h6">Hurtige facts</MudText>
+                            <MudDivider />
+                            <MudStack Row Spacing="3" AlignItems="AlignItems.Center">
+                                <MudIcon Icon="@Icons.Material.Filled.LocationOn" Color="Color.Primary" />
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.subtitle2">Lokation</MudText>
+                                    <MudText Typo="Typo.body2">Rødekro, Danmark</MudText>
+                                </MudStack>
+                            </MudStack>
+                            <MudStack Row Spacing="3" AlignItems="AlignItems.Center">
+                                <MudIcon Icon="@Icons.Material.Filled.Work" Color="Color.Primary" />
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.subtitle2">Rolle</MudText>
+                                    <MudText Typo="Typo.body2">Softwareudvikler hos AL Sydbank</MudText>
+                                </MudStack>
+                            </MudStack>
+                            <MudStack Row Spacing="3" AlignItems="AlignItems.Center">
+                                <MudIcon Icon="@Icons.Material.Filled.Code" Color="Color.Primary" />
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.subtitle2">Fokus</MudText>
+                                    <MudText Typo="Typo.body2">.NET, Blazor og C#</MudText>
+                                </MudStack>
+                            </MudStack>
+                            <MudStack Row Spacing="3" AlignItems="AlignItems.Center">
+                                <MudIcon Icon="@Icons.Material.Filled.TrendingUp" Color="Color.Primary" />
+                                <MudStack Spacing="0">
+                                    <MudText Typo="Typo.subtitle2">Interesse</MudText>
+                                    <MudText Typo="Typo.body2">Langsigtede investeringer</MudText>
+                                </MudStack>
+                            </MudStack>
+                        </MudStack>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
         </MudStack>
     </MudContainer>
 </section>

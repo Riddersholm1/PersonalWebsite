@@ -100,13 +100,133 @@ code {
 
 /* Page sections */
 .hero-section {
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 75px);
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(36, 86, 180, 0.18), transparent 55%),
+        radial-gradient(circle at 85% 80%, rgba(26, 164, 184, 0.16), transparent 55%);
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.hero-eyebrow {
+    align-self: flex-start;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.hero-title {
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.hero-accent {
+    background: linear-gradient(135deg, #2456B4 0%, #1AA4B8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.hero-lead {
+    max-width: 38rem;
+    opacity: 0.8;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.hero-meta {
+    margin-top: 1rem;
+    opacity: 0.75;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(127, 156, 220, 0.18);
+}
+
+.hero-avatar {
+    width: 96px;
+    height: 96px;
+    font-size: 2rem;
+    font-weight: 700;
+    box-shadow: 0 12px 32px rgba(36, 86, 180, 0.35);
+}
+
+.hero-card-subtitle {
+    opacity: 0.75;
+}
+
+.hero-tech-stack {
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .page-section {
-    padding: 4rem 0;
+    padding: 6rem 0;
+}
+
+/* Shared section heading */
+.section-heading {
+    margin-bottom: 1rem;
+}
+
+.section-divider {
+    width: 64px;
+    border-top-width: 3px;
+    border-color: var(--mud-palette-primary);
+    opacity: 1;
+    margin-top: 0.5rem;
+}
+
+/* About section */
+.about-paragraph {
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.about-card {
+    padding: 2rem;
+    border-radius: 16px;
+    height: 100%;
+}
+
+/* Contact section */
+.contact-lead {
+    max-width: 36rem;
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-top: 0.5rem;
+}
+
+.contact-card {
+    padding: 2.5rem;
+    border-radius: 20px;
+}
+
+.contact-actions {
+    height: 100%;
 }
 
 .chip-row {
@@ -119,4 +239,23 @@ code {
 
 .experience-card:hover {
     transform: translateY(-2px);
+}
+
+@media (max-width: 960px) {
+    .hero-section {
+        min-height: auto;
+    }
+
+    .hero-container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .page-section {
+        padding: 4rem 0;
+    }
+
+    .hero-eyebrow {
+        align-self: center;
+    }
 }
