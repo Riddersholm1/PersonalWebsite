@@ -99,6 +99,20 @@ code {
     }
 
 /* ============================================================
+   App bar / mobile navigation
+   ============================================================ */
+.app-bar-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mobile-nav-stack {
+    padding: 0.5rem 1rem 1rem;
+    min-width: 240px;
+}
+
+/* ============================================================
    Global page background — single soft gradient that flows
    underneath every section so the whole page feels tied together
    ============================================================ */
