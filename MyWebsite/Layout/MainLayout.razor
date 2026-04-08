@@ -11,7 +11,7 @@
     <MudAppBar Elevation="1" Dense="true">
         <MudText Typo="Typo.h5" Class="app-bar-title">Jespers Portfolio</MudText>
 
-        <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Class="d-none d-lg-flex ml-4">
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Class="desktop-nav">
             <MudButton Href="#home" Variant="@(IsActiveSection("home") ? Variant.Filled : Variant.Text)">Hjem</MudButton>
             <MudButton Href="#about" Variant="@(IsActiveSection("about") ? Variant.Filled : Variant.Text)">Om mig</MudButton>
             <MudButton Href="#skills" Variant="@(IsActiveSection("skills") ? Variant.Filled : Variant.Text)">Kompetencer</MudButton>
@@ -31,7 +31,7 @@
                        Color="Color.Inherit"
                        Edge="Edge.End"
                        OnClick="@ToggleDrawer"
-                       Class="d-flex d-lg-none" />
+                       Class="mobile-nav-toggle" />
     </MudAppBar>
 
     <MudDrawer @bind-Open="_drawerOpen"
