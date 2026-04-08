@@ -9,6 +9,7 @@ public partial class MainLayout : IAsyncDisposable
     private IJSRuntime JS { get; set; } = null!;
 
     private bool _isDarkMode = true;
+    private bool _drawerOpen;
     private string _activeSection = "home";
     private DotNetObjectReference<MainLayout>? _dotNetRef;
 
@@ -16,6 +17,10 @@ public partial class MainLayout : IAsyncDisposable
         string.Equals(_activeSection, sectionId, StringComparison.OrdinalIgnoreCase);
 
     private void ToggleTheme() => _isDarkMode = !_isDarkMode;
+
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+
+    private void CloseDrawer() => _drawerOpen = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
