@@ -66,27 +66,32 @@ code {
     }
 
 /* ============================================================
-   Initial loading screen — shown until Blazor WASM boots
+   Initial loading screen — shown until Blazor WASM boots.
+   No fade-in: mobile browsers may finish booting WASM before a
+   fade-in completes, making the loader appear to never show up.
+   Uses explicit top/right/bottom/left instead of `inset: 0` for
+   broader mobile browser support.
    ============================================================ */
 .app-loader {
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    box-sizing: border-box;
     background: radial-gradient(circle at 20% 15%, rgba(36, 86, 180, 0.25), transparent 55%),
                 radial-gradient(circle at 80% 85%, rgba(26, 164, 184, 0.18), transparent 55%),
                 #101827;
     color: #E6EAF3;
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    animation: app-loader-fade-in 0.4s ease-out both;
-}
-
-@keyframes app-loader-fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    z-index: 9999;
 }
 
 .app-loader-logo {
@@ -104,7 +109,7 @@ code {
     box-shadow: 0 16px 40px rgba(36, 86, 180, 0.45),
                 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
     margin-bottom: 1.75rem;
-    animation: app-loader-pulse 2.4s ease-in-out infinite;
+    animation: app-loader-pulse 1.4s ease-in-out infinite;
 }
 
 @keyframes app-loader-pulse {
@@ -114,7 +119,7 @@ code {
                     0 0 0 1px rgba(255, 255, 255, 0.08) inset;
     }
     50% {
-        transform: scale(1.04);
+        transform: scale(1.05);
         box-shadow: 0 20px 48px rgba(26, 164, 184, 0.55),
                     0 0 0 1px rgba(255, 255, 255, 0.12) inset;
     }
@@ -157,7 +162,7 @@ code {
                 #1AA4B8 75%,
                 rgba(26, 164, 184, 0) 100%);
     border-radius: 999px;
-    animation: app-loader-slide 1.6s ease-in-out infinite;
+    animation: app-loader-slide 0.9s ease-in-out infinite;
 }
 
 @keyframes app-loader-slide {
@@ -166,56 +171,13 @@ code {
 }
 
 /* ============================================================
-   App bar / mobile navigation
+   App bar
    ============================================================ */
 .app-bar-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 0;
-}
-
-/* Inline nav buttons — only visible on large screens where
-   the seven section buttons + title + theme toggle fit comfortably.
-   !important is required because MudBlazor's own .mud-stack /
-   .mud-button-root rules set display and load after app.css. */
-.desktop-nav {
-    display: none !important;
-    margin-left: 1.5rem;
-}
-
-/* Hamburger button — visible by default, hidden on large screens */
-.mobile-nav-toggle {
-    display: inline-flex !important;
-}
-
-@media (min-width: 1200px) {
-    .desktop-nav {
-        display: flex !important;
-    }
-
-    .mobile-nav-toggle {
-        display: none !important;
-    }
-}
-
-.mobile-nav-stack {
-    padding: 0.5rem 1rem 1rem;
-    min-width: 240px;
-}
-
-/* ============================================================
-   App bar / mobile navigation
-   ============================================================ */
-.app-bar-title {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.mobile-nav-stack {
-    padding: 0.5rem 1rem 1rem;
-    min-width: 240px;
 }
 
 /* ============================================================
