@@ -420,6 +420,52 @@ code {
 }
 
 /* ============================================================
+   Timeline — uniform, professional look. A single accent color
+   and a consistent dot size across both Experience and Education
+   make the sections feel deliberate rather than random.
+   ============================================================ */
+
+/* Soft vertical connector line — MudBlazor renders it as a
+   ::before pseudo-element on the vertical timeline container. */
+.professional-timeline.mud-timeline-vertical::before {
+    background: linear-gradient(
+        180deg,
+        rgba(91, 156, 246, 0.55) 0%,
+        rgba(91, 156, 246, 0.25) 100%);
+    width: 2px;
+}
+
+/* Subtle halo around every dot so it reads as a deliberate
+   marker rather than a flat circle. */
+.professional-timeline .mud-timeline-item-dot {
+    box-shadow: 0 0 0 4px rgba(91, 156, 246, 0.10);
+    border-radius: 50%;
+}
+
+/* Filled dots get a soft gradient from primary to secondary —
+   ties the timeline into the rest of the brand palette. */
+.professional-timeline .mud-timeline-item-dot-inner.mud-timeline-dot-fill {
+    background: linear-gradient(
+        135deg,
+        var(--mud-palette-primary) 0%,
+        var(--mud-palette-secondary) 100%);
+    box-shadow: 0 4px 12px rgba(36, 86, 180, 0.35);
+}
+
+/* Outlined dots (used for minor/earlier roles) use the same
+   primary color so the whole timeline feels unified. */
+.professional-timeline .mud-timeline-item-dot-inner:not(.mud-timeline-dot-fill) {
+    border-color: var(--mud-palette-primary);
+    background: var(--mud-palette-surface);
+    box-shadow: 0 2px 6px rgba(36, 86, 180, 0.15);
+}
+
+.professional-timeline .mud-timeline-item-dot-inner:not(.mud-timeline-dot-fill) .mud-icon-root {
+    color: var(--mud-palette-primary);
+    opacity: 0.7;
+}
+
+/* ============================================================
    Footer — proper breathing room above social icons
    ============================================================ */
 footer {
