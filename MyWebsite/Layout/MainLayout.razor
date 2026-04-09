@@ -1,4 +1,4 @@
-﻿@using MyWebsite.Theme
+@using MyWebsite.Theme
 
 @inherits LayoutComponentBase
 
@@ -9,7 +9,7 @@
 
 <MudLayout>
     <MudAppBar Elevation="1" Dense="true">
-        <MudText Typo="Typo.h5" Class="app-bar-title">Jespers Portfolio</MudText>
+        <MudText Typo="Typo.h5" Class="app-bar-title">Jesper Bruhn Riddersholm</MudText>
 
         <MudStack Row AlignItems="AlignItems.Center" Spacing="2" Class="d-none d-lg-flex ml-4">
             <MudButton Href="#home" Variant="@(IsActiveSection("home") ? Variant.Filled : Variant.Text)">Hjem</MudButton>
@@ -26,39 +26,7 @@
         <MudIconButton Icon="@(_isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
                        Color="Color.Inherit"
                        OnClick="@ToggleTheme" />
-
-        <MudIconButton Icon="@Icons.Material.Filled.Menu"
-                       Color="Color.Inherit"
-                       Edge="Edge.End"
-                       OnClick="@ToggleDrawer"
-                       Class="d-flex d-lg-none" />
     </MudAppBar>
-
-    <MudDrawer @bind-Open="_drawerOpen"
-               Anchor="Anchor.End"
-               Elevation="2"
-               Variant="@DrawerVariant.Temporary"
-               ClipMode="DrawerClipMode.Never">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h6">Navigation</MudText>
-        </MudDrawerHeader>
-        <MudStack Spacing="2" Class="mobile-nav-stack">
-            <MudButton Href="#home" FullWidth="true" OnClick="@CloseDrawer"
-                       Variant="@(IsActiveSection("home") ? Variant.Filled : Variant.Text)">Hjem</MudButton>
-            <MudButton Href="#about" FullWidth="true" OnClick="@CloseDrawer"
-                       Variant="@(IsActiveSection("about") ? Variant.Filled : Variant.Text)">Om mig</MudButton>
-            <MudButton Href="#skills" FullWidth="true" OnClick="@CloseDrawer"
-                       Variant="@(IsActiveSection("skills") ? Variant.Filled : Variant.Text)">Kompetencer</MudButton>
-            <MudButton Href="#projects" FullWidth="true" OnClick="@CloseDrawer"
-                       Variant="@(IsActiveSection("projects") ? Variant.Filled : Variant.Text)">Projekter</MudButton>
-            <MudButton Href="#experience" FullWidth="true" OnClick="@CloseDrawer"
-                       Variant="@(IsActiveSection("experience") ? Variant.Filled : Variant.Text)">Erfaring</MudButton>
-            <MudButton Href="#education" FullWidth="true" OnClick="@CloseDrawer"
-                       Variant="@(IsActiveSection("education") ? Variant.Filled : Variant.Text)">Uddannelse</MudButton>
-            <MudButton Href="#contact" FullWidth="true" OnClick="@CloseDrawer"
-                       Variant="@(IsActiveSection("contact") ? Variant.Filled : Variant.Text)">Kontakt</MudButton>
-        </MudStack>
-    </MudDrawer>
 
     <MudMainContent>
         @Body
