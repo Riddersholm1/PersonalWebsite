@@ -202,9 +202,23 @@ code {
     align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+/* Hero background gradient lives on a pseudo-element so its
+   bottom edge can be masked to transparent, letting the color
+   bleed smoothly into the section below instead of cutting off
+   on a hard rectangular edge. */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background:
         radial-gradient(circle at 15% 20%, rgba(36, 86, 180, 0.22), transparent 55%),
         radial-gradient(circle at 85% 80%, rgba(26, 164, 184, 0.18), transparent 55%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 65%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 65%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .hero-container {
@@ -290,10 +304,28 @@ code {
     overflow: hidden;
 }
 
-.page-section-alt {
+/* Alt-section gradient lives on a pseudo-element so its top and
+   bottom edges can be masked to transparent. The colours bleed
+   softly into the neighbouring sections for a smooth, professional
+   transition instead of a hard rectangular edge. */
+.page-section-alt::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background:
-        radial-gradient(circle at 90% 15%, rgba(36, 86, 180, 0.07), transparent 50%),
-        radial-gradient(circle at 10% 85%, rgba(26, 164, 184, 0.06), transparent 50%);
+        radial-gradient(circle at 90% 15%, rgba(36, 86, 180, 0.09), transparent 55%),
+        radial-gradient(circle at 10% 85%, rgba(26, 164, 184, 0.08), transparent 55%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Keep section content above the pseudo-element gradient so the
+   overlay never paints on top of the actual text or components. */
+.page-section > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* ============================================================
@@ -351,14 +383,8 @@ code {
 .project-card {
     height: 100%;
     border-radius: 16px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(36, 86, 180, 0.18);
 }
 
 .project-card .mud-card-content {
@@ -403,11 +429,6 @@ code {
 
 .experience-card {
     border-radius: 12px;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.experience-card:hover {
-    transform: translateY(-2px);
 }
 
 .experience-card-minor {
@@ -417,6 +438,68 @@ code {
 .experience-card-minor .mud-typography-h6 {
     font-size: 1rem;
     font-weight: 500;
+}
+
+/* ============================================================
+   Shared gradient hover — project cards, experience cards,
+   about, contact and hero cards all share the same subtle lift
+   plus a soft brand-coloured gradient overlay on hover so the
+   whole site feels unified.
+   ============================================================ */
+.project-card,
+.experience-card,
+.about-card,
+.contact-card,
+.hero-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card::before,
+.experience-card::before,
+.about-card::before,
+.contact-card::before,
+.hero-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(36, 86, 180, 0.16) 0%,
+        rgba(26, 164, 184, 0.14) 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Keep card content above the gradient overlay pseudo-element. */
+.project-card > *,
+.experience-card > *,
+.about-card > *,
+.contact-card > *,
+.hero-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.project-card:hover,
+.experience-card:hover,
+.about-card:hover,
+.contact-card:hover,
+.hero-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(36, 86, 180, 0.22);
+}
+
+.project-card:hover::before,
+.experience-card:hover::before,
+.about-card:hover::before,
+.contact-card:hover::before,
+.hero-card:hover::before {
+    opacity: 1;
 }
 
 /* ============================================================
