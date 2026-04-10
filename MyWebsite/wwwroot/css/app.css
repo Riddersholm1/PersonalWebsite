@@ -13,6 +13,14 @@ body {
     background-color: #101827;
 }
 
+/* Match the body background to the OS theme so there is no flash of
+   the wrong color before Blazor boots and MudBlazor renders. */
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #F8FAFD;
+    }
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -168,6 +176,22 @@ code {
 @keyframes app-loader-slide {
     0% { transform: translateX(-120%); }
     100% { transform: translateX(370%); }
+}
+
+/* Light-mode variant of the loader — keeps the same brand feel
+   but with inverted backgrounds and text so the splash screen
+   matches the OS theme before Blazor renders. */
+@media (prefers-color-scheme: light) {
+    .app-loader {
+        background: radial-gradient(circle at 20% 15%, rgba(36, 86, 180, 0.12), transparent 55%),
+                    radial-gradient(circle at 80% 85%, rgba(26, 164, 184, 0.10), transparent 55%),
+                    #F8FAFD;
+        color: #1A2744;
+    }
+
+    .app-loader-progress {
+        background: rgba(0, 0, 0, 0.06);
+    }
 }
 
 /* ============================================================
