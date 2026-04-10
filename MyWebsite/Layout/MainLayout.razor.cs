@@ -9,7 +9,25 @@ public partial class MainLayout : IAsyncDisposable
 
     private bool _isDarkMode = true;
     private bool _userHasToggled;
+    private bool _drawerOpen;
+    private string _activeSection = "home";
     private DotNetObjectReference<MainLayout>? _dotNetRef;
+
+    private static readonly NavSection[] _sections =
+    [
+        new("home", "Hjem", Icons.Material.Filled.Home),
+        new("about", "Om mig", Icons.Material.Filled.Person),
+        new("skills", "Kompetencer", Icons.Material.Filled.Code),
+        new("projects", "Projekter", Icons.Material.Filled.Folder),
+        new("experience", "Erfaring", Icons.Material.Filled.Work),
+        new("education", "Uddannelse", Icons.Material.Filled.School),
+        new("contact", "Kontakt", Icons.Material.Filled.Email),
+    ];
+
+    private string ActiveSectionLabel =>
+        _sections.FirstOrDefault(s => s.Id == _activeSection)?.Label ?? "Hjem";
+
+    private bool IsActive(string sectionId) => _activeSection == sectionId;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -17,16 +35,25 @@ public partial class MainLayout : IAsyncDisposable
             return;
 
         _dotNetRef = DotNetObjectReference.Create(this);
-        var prefersDark = await JS.InvokeAsync<bool>("themeDetector.init", _dotNetRef);
 
+        var prefersDark = await JS.InvokeAsync<bool>("themeDetector.init", _dotNetRef);
         _isDarkMode = prefersDark;
+
+        await JS.InvokeVoidAsync("sectionObserver.init", _dotNetRef);
+
         StateHasChanged();
     }
 
-    /// <summary>
-    /// Called from JS when the OS-level color-scheme preference changes.
-    /// Ignored once the user has manually toggled the theme.
-    /// </summary>
+    [JSInvokable]
+    public void SetActiveSection(string sectionId)
+    {
+        if (_activeSection == sectionId)
+            return;
+
+        _activeSection = sectionId;
+        StateHasChanged();
+    }
+
     [JSInvokable]
     public void OnSystemThemeChanged(bool prefersDark)
     {
@@ -43,10 +70,15 @@ public partial class MainLayout : IAsyncDisposable
         _userHasToggled = true;
     }
 
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+
+    private void CloseDrawer() => _drawerOpen = false;
+
     public async ValueTask DisposeAsync()
     {
         try
         {
+            await JS.InvokeVoidAsync("sectionObserver.dispose");
             await JS.InvokeVoidAsync("themeDetector.dispose");
         }
         catch (JSDisconnectedException)
@@ -56,4 +88,6 @@ public partial class MainLayout : IAsyncDisposable
 
         _dotNetRef?.Dispose();
     }
+
+    private sealed record NavSection(string Id, string Label, string Icon);
 }
