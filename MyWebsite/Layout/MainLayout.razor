@@ -28,7 +28,7 @@
                            Variant="@(IsActive(section.Id) ? Variant.Filled : Variant.Text)"
                            Color="@(IsActive(section.Id) ? Color.Primary : Color.Inherit)"
                            Size="Size.Small">
-                    @section.Label
+                    @(section.Label)
                 </MudButton>
             }
         </MudStack>
@@ -56,10 +56,10 @@
             @foreach (var section in _sections)
             {
                 <MudNavLink Href="@($"#{section.Id}")"
-                            Icon="@section.Icon"
+                            Icon="@(section.Icon)"
                             IconColor="@(IsActive(section.Id) ? Color.Primary : Color.Default)"
                             OnClick="@CloseDrawer">
-                    @section.Label
+                    @(section.Label)
                 </MudNavLink>
             }
         </MudNavMenu>
