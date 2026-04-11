@@ -22,7 +22,7 @@
 
         @* Desktop: full nav buttons *@
         <MudStack Row Spacing="0" AlignItems="AlignItems.Center" Class="d-none d-md-flex">
-            @foreach (var section in _sections)
+            @foreach (NavSection section in Sections)
             {
                 <MudButton Href="@($"#{section.Id}")"
                            Variant="@(IsActive(section.Id) ? Variant.Filled : Variant.Text)"
@@ -53,7 +53,7 @@
         </MudDrawerHeader>
         <MudDivider />
         <MudNavMenu>
-            @foreach (var section in _sections)
+            @foreach (NavSection section in Sections)
             {
                 <MudNavLink Href="@($"#{section.Id}")"
                             Icon="@(section.Icon)"
@@ -69,5 +69,5 @@
         @Body
     </MudMainContent>
 
-    <Footer />
+    <Footer></Footer>
 </MudLayout>

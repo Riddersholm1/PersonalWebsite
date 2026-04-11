@@ -7,7 +7,7 @@ namespace MyWebsite.Layout;
 public partial class MainLayout : IAsyncDisposable
 {
     [Inject]
-    private IJSRuntime JS { get; set; } = default!;
+    private IJSRuntime JS { get; set; } = null!;
 
     private bool _isDarkMode = true;
     private bool _userHasToggled;
@@ -15,7 +15,7 @@ public partial class MainLayout : IAsyncDisposable
     private string _activeSection = "home";
     private DotNetObjectReference<MainLayout>? _dotNetRef;
 
-    private static readonly NavSection[] _sections =
+    private static readonly NavSection[] Sections =
     [
         new("home", "Hjem", Icons.Material.Filled.Home),
         new("about", "Om mig", Icons.Material.Filled.Person),
@@ -27,14 +27,16 @@ public partial class MainLayout : IAsyncDisposable
     ];
 
     private string ActiveSectionLabel =>
-        _sections.FirstOrDefault(s => s.Id == _activeSection)?.Label ?? "Hjem";
+        Sections.FirstOrDefault(s => s.Id == _activeSection)?.Label ?? "Hjem";
 
     private bool IsActive(string sectionId) => _activeSection == sectionId;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender)
+        {
             return;
+        }
 
         _dotNetRef = DotNetObjectReference.Create(this);
 
@@ -50,7 +52,9 @@ public partial class MainLayout : IAsyncDisposable
     public void SetActiveSection(string sectionId)
     {
         if (_activeSection == sectionId)
+        {
             return;
+        }
 
         _activeSection = sectionId;
         StateHasChanged();
@@ -60,7 +64,9 @@ public partial class MainLayout : IAsyncDisposable
     public void OnSystemThemeChanged(bool prefersDark)
     {
         if (_userHasToggled)
+        {
             return;
+        }
 
         _isDarkMode = prefersDark;
         StateHasChanged();
@@ -89,6 +95,7 @@ public partial class MainLayout : IAsyncDisposable
         }
 
         _dotNetRef?.Dispose();
+        GC.SuppressFinalize(this);
     }
 
     private sealed record NavSection(string Id, string Label, string Icon);
