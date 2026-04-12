@@ -2,7 +2,7 @@
 
 @inherits LayoutComponentBase
 
-<MudThemeProvider IsDarkMode="_isDarkMode" Theme="MudBlazorTheme.Get()" />
+<MudThemeProvider @ref="_mudThemeProvider" IsDarkMode="_isDarkMode" Theme="MudBlazorTheme.Get()" />
 <MudPopoverProvider />
 <MudDialogProvider CloseButton="true" MaxWidth="@MaxWidth.Medium" FullWidth="false"
                    BackdropClick="false" CloseOnEscapeKey="true" Position="@DialogPosition.Center" />
@@ -10,60 +10,12 @@
 
 <MudLayout>
     <MudAppBar Elevation="1" Dense="true">
-        @* Mobile: hamburger menu *@
-        <MudIconButton Icon="@Icons.Material.Filled.Menu"
-                       Color="Color.Inherit"
-                       OnClick="@ToggleDrawer"
-                       Class="d-md-none" />
-
         <MudText Typo="Typo.h6" Class="app-bar-title">Jesper Riddersholm</MudText>
-
         <MudSpacer />
-
-        @* Desktop: full nav buttons *@
-        <MudStack Row Spacing="0" AlignItems="AlignItems.Center" Class="d-none d-md-flex">
-            @foreach (NavSection section in Sections)
-            {
-                <MudButton Href="@($"#{section.Id}")"
-                           Variant="@(IsActive(section.Id) ? Variant.Filled : Variant.Text)"
-                           Color="@(IsActive(section.Id) ? Color.Primary : Color.Inherit)"
-                           Size="Size.Small">
-                    @(section.Label)
-                </MudButton>
-            }
-        </MudStack>
-
-        @* Mobile / tablet: active section indicator *@
-        <MudChip T="string" Size="Size.Small" Color="Color.Primary" Variant="Variant.Outlined"
-                 Class="d-md-none">
-            @ActiveSectionLabel
-        </MudChip>
-
         <MudIconButton Icon="@(_isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
                        Color="Color.Inherit"
                        OnClick="@ToggleTheme" />
     </MudAppBar>
-
-    <MudDrawer @bind-Open="_drawerOpen" Variant="DrawerVariant.Temporary" Elevation="2">
-        <MudDrawerHeader>
-            <MudStack Spacing="0">
-                <MudText Typo="Typo.h6">Jesper Riddersholm</MudText>
-                <MudText Typo="Typo.caption">Portfolio</MudText>
-            </MudStack>
-        </MudDrawerHeader>
-        <MudDivider />
-        <MudNavMenu>
-            @foreach (NavSection section in Sections)
-            {
-                <MudNavLink Href="@($"#{section.Id}")"
-                            Icon="@(section.Icon)"
-                            IconColor="@(IsActive(section.Id) ? Color.Primary : Color.Default)"
-                            OnClick="@CloseDrawer">
-                    @(section.Label)
-                </MudNavLink>
-            }
-        </MudNavMenu>
-    </MudDrawer>
 
     <MudMainContent>
         @Body
