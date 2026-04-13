@@ -284,8 +284,8 @@ body {
 }
 
 .hero-avatar {
-    width: 96px;
-    height: 96px;
+    width: 160px;
+    height: 160px;
     font-size: 2rem;
     font-weight: 700;
     box-shadow: 0 12px 32px rgba(36, 86, 180, 0.35);
