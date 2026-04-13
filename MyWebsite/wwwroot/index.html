@@ -8,7 +8,6 @@
     <title>Jesper Riddersholm</title>
     <base href="/" />
     <link rel="preload" id="webassembly" />
-    <link rel="stylesheet" href="css/app.css" />
     <!-- If you add any scoped CSS files, uncomment the following to load them
     <link href="MyWebsite.styles.css" rel="stylesheet" /> -->
     <script type="importmap"></script>
@@ -16,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <!-- Important: Increment the version parameter whenever you update MudBlazor to prevent caching issues -->
     <link href="_content/MudBlazor/MudBlazor.min.css?v=1" rel="stylesheet" />
+    <!-- Custom styles loaded after MudBlazor so overrides work at equal specificity -->
+    <link rel="stylesheet" href="css/app.css" />
 </head>
 
 <body>
